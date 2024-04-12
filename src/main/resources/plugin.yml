@@ -1,4 +1,4 @@
 name: UpgradeSticks
-version: '${project.version}'
+version: 1.0
 main: de.nikey.upgradesticks.UpgradeSticks
-api-version: '1.20'
+api-version: 1.20
