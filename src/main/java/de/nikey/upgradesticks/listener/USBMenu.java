@@ -41,19 +41,17 @@ public class USBMenu implements Listener {
         Inventory clickedInventory = event.getClickedInventory();
         Inventory playerInventory = event.getWhoClicked().getInventory();
 
-        // Überprüfe, ob ein Spieler auf ein Inventar klickt
         if (clickedInventory != null) {
-            // Überprüfe, ob das geklickte Inventar "inv" ist
             if (event.getView().getTitle().equalsIgnoreCase("USB Menu")) {
                 event.setCancelled(true);
-                // Überprüfe, ob das geklickte Item ein Papier ist
+                //Menü
                 if (clickedInventory == playerInv.get(event.getWhoClicked())) {
                     if (event.getCurrentItem() != null && event.getCurrentItem().getType() == Material.PAPER) {
                         ItemStack currentItem = event.getCurrentItem();
                         if (currentItem.getItemMeta().getDisplayName().contains("§c")) {
                             Inventory inventory = playerInv.get(event.getWhoClicked());
                             inventory.setItem(event.getSlot(),new ItemStack(Material.RED_STAINED_GLASS_PANE));
-                            StrenghSticks.DamageStick((Player) event.getWhoClicked());
+                            StrenghSticks.CloseDamageStick((Player) event.getWhoClicked());
                             playerInv.replace((Player) event.getWhoClicked(),inventory);
                             savePlayerBackpack(((Player) event.getWhoClicked()).getPlayer());
                         }

@@ -1,10 +1,7 @@
 package de.nikey.upgradesticks.listener;
 
 import de.nikey.upgradesticks.ItemStacks.StrenghSticks;
-import org.bukkit.entity.LivingEntity;
-import org.bukkit.entity.Player;
-import org.bukkit.entity.Warden;
-import org.bukkit.entity.Zombie;
+import org.bukkit.entity.*;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDeathEvent;
@@ -21,13 +18,25 @@ public class StrenghtUSB implements Listener {
                 Random random = new Random();
                 int i = random.nextInt(3);
                 if (i == 2) {
-                    StrenghSticks.DamageStick(killer);
+                    StrenghSticks.CloseDamageStick(killer);
                 }
             } else if (entity instanceof Zombie) {
                 Random random = new Random();
                 int i = random.nextInt(400);
                 if (i == 220) {
-                    StrenghSticks.DamageStick(killer);
+                    StrenghSticks.CloseDamageStick(killer);
+                }
+            }else if (entity instanceof Skeleton) {
+                Random random = new Random();
+                int i = random.nextInt(350);
+                if (i == 220) {
+                    StrenghSticks.DistantDamageStick(killer);
+                }
+            }else if (entity instanceof Pillager) {
+                Random random = new Random();
+                int i = random.nextInt(120);
+                if (i == 50) {
+                    StrenghSticks.DistantDamageStick(killer);
                 }
             }
         }

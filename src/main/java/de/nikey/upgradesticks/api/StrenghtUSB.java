@@ -16,12 +16,11 @@ public class StrenghtUSB {
         // Durch das Inventar des Spielers iterieren
         for (ItemStack item : inventory.getContents()) {
             if (item != null && item.getType() == Material.PAPER && item.hasItemMeta()) {
-                if (item.getItemMeta().getDisplayName().equalsIgnoreCase("§cDamage USB")){
+                if (item.getItemMeta().getDisplayName().equalsIgnoreCase("§cDamage USB (Close)")){
                     amount += 1;
                 }
             }
         }
-
         return amount;
     }
 }

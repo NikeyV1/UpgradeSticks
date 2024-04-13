@@ -1,13 +1,10 @@
 package de.nikey.upgradesticks;
 
-import de.nikey.upgradesticks.listener.StrenghtUSB;
 import de.nikey.upgradesticks.listener.USBMenu;
-import de.nikey.upgradesticks.usbsticks.StrenghStick;
+import de.nikey.upgradesticks.usbsticks.StrengthStick;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
-
-import java.util.HashMap;
 
 public final class UpgradeSticks extends JavaPlugin {
 
@@ -20,7 +17,7 @@ public final class UpgradeSticks extends JavaPlugin {
 
         PluginManager pm = Bukkit.getPluginManager();
         pm.registerEvents(new USBMenu(),this);
-        pm.registerEvents(new StrenghStick(),this);
+        pm.registerEvents(new StrengthStick(),this);
 
     }
 

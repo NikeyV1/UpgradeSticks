@@ -6,13 +6,14 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
 
-public class StrenghStick implements Listener {
+public class StrengthStick implements Listener {
     @EventHandler
     public void onEntityDamageByEntity(EntityDamageByEntityEvent event) {
         if (event.getDamager() instanceof Player) {
             Player player = (Player) event.getDamager();
-            int amount = StrenghtUSB.getAmount(player);
-            amount = (int) (amount*7.5);
+            double amount = StrenghtUSB.getAmount(player);
+
+            amount =  amount*7.5;
             amount = amount/100 +1;
             event.setDamage(event.getDamage() * amount);
         }
