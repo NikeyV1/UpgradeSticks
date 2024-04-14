@@ -53,4 +53,15 @@ public class DefenseSticks {
         player.getInventory().addItem(stack);
     }
 
+    public static void ThornsStick(Player player) {
+        ItemStack stack = new ItemStack(Material.PAPER);
+        ItemMeta itemMeta = stack.getItemMeta();
+        itemMeta.setDisplayName("§dThorns USB");
+        ArrayList<String> lore = new ArrayList<>();
+        lore.add("§fIncrease chance for thorns by 5%");
+        itemMeta.setLore(lore);
+        stack.setItemMeta(itemMeta);
+        player.getInventory().addItem(stack);
+    }
+
 }
