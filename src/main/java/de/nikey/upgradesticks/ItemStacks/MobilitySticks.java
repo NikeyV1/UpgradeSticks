@@ -7,36 +7,47 @@ import org.bukkit.inventory.meta.ItemMeta;
 
 import java.util.ArrayList;
 
-@SuppressWarnings("ALL")
-public class StrenghSticks {
-    public static void CloseDamageStick(Player player) {
+public class MobilitySticks {
+
+    public static void WalkSpeedStick(Player player) {
         ItemStack stack = new ItemStack(Material.PAPER);
         ItemMeta itemMeta = stack.getItemMeta();
-        itemMeta.setDisplayName("§cDamage USB (Close)");
+        itemMeta.setDisplayName("§eWalk Speed USB");
         ArrayList<String> lore = new ArrayList<>();
-        lore.add("§fIncrease damage by +7.5% Damage to close targets");
+        lore.add("§fIncrease movement speed by +8%");
         itemMeta.setLore(lore);
         stack.setItemMeta(itemMeta);
         player.getInventory().addItem(stack);
     }
 
-    public static void DistantDamageStick(Player player) {
+    public static void SwimSpeedStick(Player player) {
         ItemStack stack = new ItemStack(Material.PAPER);
         ItemMeta itemMeta = stack.getItemMeta();
-        itemMeta.setDisplayName("§cDamage USB (Distant)");
+        itemMeta.setDisplayName("§eSwim Speed USB");
         ArrayList<String> lore = new ArrayList<>();
-        lore.add("§fIncrease damage by +7.5% Damage to far-off targets");
+        lore.add("§fIncrease swimming speed by +10%");
         itemMeta.setLore(lore);
         stack.setItemMeta(itemMeta);
         player.getInventory().addItem(stack);
     }
 
-    public static void AttackSpeed(Player player) {
+    public static void HungerMoveStick(Player player) {
         ItemStack stack = new ItemStack(Material.PAPER);
         ItemMeta itemMeta = stack.getItemMeta();
-        itemMeta.setDisplayName("§cAttack Speed USB");
+        itemMeta.setDisplayName("§eHunger Move USB");
         ArrayList<String> lore = new ArrayList<>();
-        lore.add("§fIncrease attack speed by +7.5%");
+        lore.add("§fIncrease chance to gain 1 hunger back by 0.001%");
+        itemMeta.setLore(lore);
+        stack.setItemMeta(itemMeta);
+        player.getInventory().addItem(stack);
+    }
+
+    public static void ExpMoveStick(Player player) {
+        ItemStack stack = new ItemStack(Material.PAPER);
+        ItemMeta itemMeta = stack.getItemMeta();
+        itemMeta.setDisplayName("§eExperience Move USB");
+        ArrayList<String> lore = new ArrayList<>();
+        lore.add("§fIncrease chance to gain 1 experience by 0.001% ");
         itemMeta.setLore(lore);
         stack.setItemMeta(itemMeta);
         player.getInventory().addItem(stack);

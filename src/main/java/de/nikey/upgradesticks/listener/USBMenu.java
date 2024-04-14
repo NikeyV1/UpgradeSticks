@@ -1,5 +1,6 @@
 package de.nikey.upgradesticks.listener;
 
+import de.nikey.upgradesticks.ItemStacks.MobilitySticks;
 import de.nikey.upgradesticks.UpgradeSticks;
 import de.nikey.upgradesticks.utils.MenuInventory;
 import de.nikey.upgradesticks.ItemStacks.StrenghSticks;
@@ -51,7 +52,29 @@ public class USBMenu implements Listener {
                         if (currentItem.getItemMeta().getDisplayName().contains("§c")) {
                             Inventory inventory = playerInv.get(event.getWhoClicked());
                             inventory.setItem(event.getSlot(),new ItemStack(Material.RED_STAINED_GLASS_PANE));
-                            StrenghSticks.CloseDamageStick((Player) event.getWhoClicked());
+                            if (currentItem.getItemMeta().getDisplayName().equalsIgnoreCase("§cDamage USB (Close)")) {
+                                StrenghSticks.CloseDamageStick((Player) event.getWhoClicked());
+                            } else if (currentItem.getItemMeta().getDisplayName().equalsIgnoreCase("§cDamage USB (Distant)")) {
+                                StrenghSticks.DistantDamageStick((Player) event.getWhoClicked());
+                            }else if (currentItem.getItemMeta().getDisplayName().equalsIgnoreCase("§cAttack Speed USB")) {
+                                StrenghSticks.AttackSpeed((Player) event.getWhoClicked());
+                            }
+                            playerInv.replace((Player) event.getWhoClicked(),inventory);
+                            savePlayerBackpack(((Player) event.getWhoClicked()).getPlayer());
+                        }else if (currentItem.getItemMeta().getDisplayName().contains("§e")) {
+                            Inventory inventory = playerInv.get(event.getWhoClicked());
+                            inventory.setItem(event.getSlot(),new ItemStack(Material.YELLOW_STAINED_GLASS_PANE));
+
+                            if (currentItem.getItemMeta().getDisplayName().equalsIgnoreCase("§eWalk Speed USB")) {
+                                MobilitySticks.WalkSpeedStick((Player) event.getWhoClicked());
+                            } else if (currentItem.getItemMeta().getDisplayName().equalsIgnoreCase("§eSwim Speed USB")) {
+                                MobilitySticks.SwimSpeedStick((Player) event.getWhoClicked());
+                            }else if (currentItem.getItemMeta().getDisplayName().equalsIgnoreCase("§eExperience Move USB")) {
+                                MobilitySticks.ExpMoveStick((Player) event.getWhoClicked());
+                            }else if (currentItem.getItemMeta().getDisplayName().equalsIgnoreCase("§eHunger Move USB")) {
+                                MobilitySticks.HungerMoveStick((Player) event.getWhoClicked());
+                            }
+
                             playerInv.replace((Player) event.getWhoClicked(),inventory);
                             savePlayerBackpack(((Player) event.getWhoClicked()).getPlayer());
                         }
@@ -59,9 +82,21 @@ public class USBMenu implements Listener {
                 }else {
                     if (event.getCurrentItem() != null && event.getCurrentItem().getType() == Material.PAPER) {
                         ItemStack currentItem = event.getCurrentItem();
+                        Inventory inventory = event.getView().getTopInventory();
                         if (currentItem.getItemMeta().getDisplayName().contains("§c")) {
-                            Inventory inventory = event.getView().getTopInventory();
                             int first = inventory.first(Material.RED_STAINED_GLASS_PANE);
+                            if (first != -1) {
+                                currentItem.setAmount(currentItem.getAmount()-1);
+                                ItemStack stack = new ItemStack(Material.PAPER);
+                                stack.setItemMeta(currentItem.getItemMeta());
+                                stack.setAmount(1);
+                                Inventory inv = playerInv.get(event.getWhoClicked());
+                                inv.setItem(first,stack);
+                                playerInv.replace((Player) event.getWhoClicked(),inv);
+                                savePlayerBackpack(((Player) event.getWhoClicked()).getPlayer());
+                            }
+                        }else if (currentItem.getItemMeta().getDisplayName().contains("§e")) {
+                            int first = inventory.first(Material.YELLOW_STAINED_GLASS_PANE);
                             if (first != -1) {
                                 currentItem.setAmount(currentItem.getAmount()-1);
                                 ItemStack stack = new ItemStack(Material.PAPER);
