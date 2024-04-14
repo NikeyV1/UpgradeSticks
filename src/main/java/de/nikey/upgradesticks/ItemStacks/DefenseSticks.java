@@ -14,7 +14,7 @@ public class DefenseSticks {
         ItemMeta itemMeta = stack.getItemMeta();
         itemMeta.setDisplayName("§dArmor USB");
         ArrayList<String> lore = new ArrayList<>();
-        lore.add("§fIncrease Armor by 0.2");
+        lore.add("§fIncrease Armor by 0.3");
         itemMeta.setLore(lore);
         stack.setItemMeta(itemMeta);
         player.getInventory().addItem(stack);

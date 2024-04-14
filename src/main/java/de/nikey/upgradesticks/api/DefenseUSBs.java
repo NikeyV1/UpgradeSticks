@@ -71,4 +71,20 @@ public class DefenseUSBs {
         }
         return amount;
     }
+
+    public static int getAmountThorns(Player player) {
+        Inventory inventory = USBMenu.playerInv.get(player);
+        int amount = 0;
+        // Durch das Inventar des Spielers iterieren
+        if (inventory != null) {
+            for (ItemStack item : inventory.getContents()) {
+                if (item != null && item.getType() == Material.PAPER && item.hasItemMeta()) {
+                    if (item.getItemMeta().getDisplayName().equalsIgnoreCase("§dThorns USB")){
+                        amount += 1;
+                    }
+                }
+            }
+        }
+        return amount;
+    }
 }

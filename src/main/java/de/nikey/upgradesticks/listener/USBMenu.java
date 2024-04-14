@@ -90,6 +90,8 @@ public class USBMenu implements Listener {
                                 DefenseSticks.KnockbackResistanceStick((Player) event.getWhoClicked());
                             }else if (currentItem.getItemMeta().getDisplayName().equalsIgnoreCase("§dDamage Resistance USB")) {
                                 DefenseSticks.DamageResistanceStick((Player) event.getWhoClicked());
+                            }else if (currentItem.getItemMeta().getDisplayName().equalsIgnoreCase("§dThorns USB")) {
+                                DefenseSticks.ThornsStick((Player) event.getWhoClicked());
                             }
 
                             playerInv.replace((Player) event.getWhoClicked(),inventory);

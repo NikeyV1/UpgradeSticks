@@ -2,6 +2,8 @@ package de.nikey.upgradesticks.usbsticks;
 
 import de.nikey.upgradesticks.api.DefenseUSBs;
 import org.bukkit.attribute.Attribute;
+import org.bukkit.entity.Entity;
+import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -16,7 +18,7 @@ public class DefenseStick implements Listener {
     public void onPlayerToggleSneak(PlayerToggleSprintEvent event) {
         Player player = event.getPlayer();
         double amountArmor = DefenseUSBs.getAmountArmor(player);
-        amountArmor = amountArmor*0.2;
+        amountArmor = amountArmor*0.3;
 
         player.getAttribute(Attribute.GENERIC_ARMOR).setBaseValue(amountArmor);
 
@@ -30,6 +32,7 @@ public class DefenseStick implements Listener {
 
 
         player.getAttribute(Attribute.GENERIC_KNOCKBACK_RESISTANCE).setBaseValue(amountKnockbackResistance);
+
     }
 
     @EventHandler
@@ -67,6 +70,41 @@ public class DefenseStick implements Listener {
                 int i = random.nextInt(6);
                 if (i == 4) {
                     player.setHealth(player.getHealth()+event.getFinalDamage());
+                }
+            }
+
+            double amountThorns = DefenseUSBs.getAmountThorns(player);
+            LivingEntity damager = (LivingEntity) event.getDamager();
+
+            if (amountThorns == 1) {
+                int i = random.nextInt(20);
+                if (i == 10) {
+                    damager.damage(event.getDamage()/2);
+                }
+            }else if (amountThorns == 2) {
+                int i = random.nextInt(10);
+                if (i == 2) {
+                    damager.damage(event.getDamage()/2);
+                }
+            }else if (amountThorns == 3) {
+                int i = random.nextInt(7);
+                if (i == 3) {
+                    damager.damage(event.getDamage()/2);
+                }
+            }else if (amountThorns == 4) {
+                int i = random.nextInt(5);
+                if (i == 2) {
+                    damager.damage(event.getDamage()/2);
+                }
+            }else if (amountThorns == 5) {
+                int i = random.nextInt(4);
+                if (i == 3) {
+                    damager.damage(event.getDamage()/2);
+                }
+            }else if (amountThorns == 6) {
+                int i = random.nextInt(3);
+                if (i == 2) {
+                    damager.damage(event.getDamage()/2);
                 }
             }
         }
