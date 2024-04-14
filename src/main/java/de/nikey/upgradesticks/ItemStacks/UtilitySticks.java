@@ -30,4 +30,15 @@ public class UtilitySticks {
         stack.setItemMeta(itemMeta);
         player.getInventory().addItem(stack);
     }
+
+    public static void AxeDurabilityStick(Player player) {
+        ItemStack stack = new ItemStack(Material.PAPER);
+        ItemMeta itemMeta = stack.getItemMeta();
+        itemMeta.setDisplayName("§aAxe Armor Damage USB");
+        ArrayList<String> lore = new ArrayList<>();
+        lore.add("§fIncrease chance for an axe damaging armor by 2.5%");
+        itemMeta.setLore(lore);
+        stack.setItemMeta(itemMeta);
+        player.getInventory().addItem(stack);
+    }
 }

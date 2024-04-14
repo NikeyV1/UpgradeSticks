@@ -2,6 +2,7 @@ package de.nikey.upgradesticks.listener;
 
 import de.nikey.upgradesticks.ItemStacks.DefenseSticks;
 import de.nikey.upgradesticks.ItemStacks.MobilitySticks;
+import de.nikey.upgradesticks.ItemStacks.UtilitySticks;
 import de.nikey.upgradesticks.UpgradeSticks;
 import de.nikey.upgradesticks.utils.MenuInventory;
 import de.nikey.upgradesticks.ItemStacks.StrenghSticks;
@@ -96,6 +97,20 @@ public class USBMenu implements Listener {
 
                             playerInv.replace((Player) event.getWhoClicked(),inventory);
                             savePlayerBackpack(((Player) event.getWhoClicked()).getPlayer());
+                        }else if (currentItem.getItemMeta().getDisplayName().contains("§a")) {
+                            Inventory inventory = playerInv.get(event.getWhoClicked());
+                            inventory.setItem(event.getSlot(),new ItemStack(Material.LIME_STAINED_GLASS_PANE));
+
+                            if (currentItem.getItemMeta().getDisplayName().equalsIgnoreCase("§aLightning Riptide USB")) {
+                                UtilitySticks.TridentLightningStick((Player) event.getWhoClicked());
+                            } else if (currentItem.getItemMeta().getDisplayName().equalsIgnoreCase("§aLuck USB")) {
+                                UtilitySticks.LuckStick((Player) event.getWhoClicked());
+                            }else if (currentItem.getItemMeta().getDisplayName().equalsIgnoreCase("§aAxe Armor Damage USB")) {
+                                UtilitySticks.AxeDurabilityStick((Player) event.getWhoClicked());
+                            }
+
+                            playerInv.replace((Player) event.getWhoClicked(),inventory);
+                            savePlayerBackpack(((Player) event.getWhoClicked()).getPlayer());
                         }
                     }
                 }else {
@@ -128,6 +143,18 @@ public class USBMenu implements Listener {
                             }
                         }else if (currentItem.getItemMeta().getDisplayName().contains("§d")) {
                             int first = inventory.first(Material.PURPLE_STAINED_GLASS_PANE);
+                            if (first != -1) {
+                                currentItem.setAmount(currentItem.getAmount()-1);
+                                ItemStack stack = new ItemStack(Material.PAPER);
+                                stack.setItemMeta(currentItem.getItemMeta());
+                                stack.setAmount(1);
+                                Inventory inv = playerInv.get(event.getWhoClicked());
+                                inv.setItem(first,stack);
+                                playerInv.replace((Player) event.getWhoClicked(),inv);
+                                savePlayerBackpack(((Player) event.getWhoClicked()).getPlayer());
+                            }
+                        }else if (currentItem.getItemMeta().getDisplayName().contains("§a")) {
+                            int first = inventory.first(Material.LIME_STAINED_GLASS_PANE);
                             if (first != -1) {
                                 currentItem.setAmount(currentItem.getAmount()-1);
                                 ItemStack stack = new ItemStack(Material.PAPER);
