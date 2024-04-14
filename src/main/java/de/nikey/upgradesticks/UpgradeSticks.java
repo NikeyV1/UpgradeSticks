@@ -1,6 +1,7 @@
 package de.nikey.upgradesticks;
 
 import de.nikey.upgradesticks.ItemStacks.MobilitySticks;
+import de.nikey.upgradesticks.listener.DefenseUSB;
 import de.nikey.upgradesticks.listener.MobilityUSB;
 import de.nikey.upgradesticks.listener.StrenghtUSB;
 import de.nikey.upgradesticks.listener.USBMenu;
@@ -25,6 +26,7 @@ public final class UpgradeSticks extends JavaPlugin {
         pm.registerEvents(new StrenghtUSB(),this);
         pm.registerEvents(new MobilityUSB(),this);
         pm.registerEvents(new MovementStick(),this);
+        pm.registerEvents(new DefenseUSB(),this);
 
     }
 

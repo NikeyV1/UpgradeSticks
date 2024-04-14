@@ -1,5 +1,6 @@
 package de.nikey.upgradesticks.listener;
 
+import de.nikey.upgradesticks.ItemStacks.DefenseSticks;
 import de.nikey.upgradesticks.ItemStacks.MobilitySticks;
 import de.nikey.upgradesticks.UpgradeSticks;
 import de.nikey.upgradesticks.utils.MenuInventory;
@@ -77,6 +78,22 @@ public class USBMenu implements Listener {
 
                             playerInv.replace((Player) event.getWhoClicked(),inventory);
                             savePlayerBackpack(((Player) event.getWhoClicked()).getPlayer());
+                        }else if (currentItem.getItemMeta().getDisplayName().contains("§d")) {
+                            Inventory inventory = playerInv.get(event.getWhoClicked());
+                            inventory.setItem(event.getSlot(),new ItemStack(Material.PURPLE_STAINED_GLASS_PANE));
+
+                            if (currentItem.getItemMeta().getDisplayName().equalsIgnoreCase("§dArmor USB")) {
+                                DefenseSticks.ArmorStick((Player) event.getWhoClicked());
+                            } else if (currentItem.getItemMeta().getDisplayName().equalsIgnoreCase("§dArmor Toughness USB")) {
+                                DefenseSticks.ArmorToughnessStick((Player) event.getWhoClicked());
+                            }else if (currentItem.getItemMeta().getDisplayName().equalsIgnoreCase("§dKnockback Resistance USB")) {
+                                DefenseSticks.KnockbackResistanceStick((Player) event.getWhoClicked());
+                            }else if (currentItem.getItemMeta().getDisplayName().equalsIgnoreCase("§dDamage Resistance USB")) {
+                                DefenseSticks.DamageResistanceStick((Player) event.getWhoClicked());
+                            }
+
+                            playerInv.replace((Player) event.getWhoClicked(),inventory);
+                            savePlayerBackpack(((Player) event.getWhoClicked()).getPlayer());
                         }
                     }
                 }else {
@@ -97,6 +114,18 @@ public class USBMenu implements Listener {
                             }
                         }else if (currentItem.getItemMeta().getDisplayName().contains("§e")) {
                             int first = inventory.first(Material.YELLOW_STAINED_GLASS_PANE);
+                            if (first != -1) {
+                                currentItem.setAmount(currentItem.getAmount()-1);
+                                ItemStack stack = new ItemStack(Material.PAPER);
+                                stack.setItemMeta(currentItem.getItemMeta());
+                                stack.setAmount(1);
+                                Inventory inv = playerInv.get(event.getWhoClicked());
+                                inv.setItem(first,stack);
+                                playerInv.replace((Player) event.getWhoClicked(),inv);
+                                savePlayerBackpack(((Player) event.getWhoClicked()).getPlayer());
+                            }
+                        }else if (currentItem.getItemMeta().getDisplayName().contains("§d")) {
+                            int first = inventory.first(Material.PURPLE_STAINED_GLASS_PANE);
                             if (first != -1) {
                                 currentItem.setAmount(currentItem.getAmount()-1);
                                 ItemStack stack = new ItemStack(Material.PAPER);
