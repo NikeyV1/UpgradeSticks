@@ -8,6 +8,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
+import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.player.PlayerToggleSneakEvent;
 import org.bukkit.event.player.PlayerToggleSprintEvent;
 
@@ -36,7 +37,7 @@ public class DefenseStick implements Listener {
     }
 
     @EventHandler
-    public void onEntityDamageByEntity(EntityDamageByEntityEvent event) {
+    public void onEntityDamage(EntityDamageEvent event) {
         if (event.getEntity() instanceof Player) {
             Player player = (Player) event.getEntity();
             double a = DefenseUSBs.getAmountDamageResistance(player);
@@ -72,6 +73,14 @@ public class DefenseStick implements Listener {
                     player.setHealth(player.getHealth()+event.getFinalDamage());
                 }
             }
+        }
+    }
+
+    @EventHandler
+    public void onEntityDamageByEntity(EntityDamageByEntityEvent event) {
+        if (event.getEntity() instanceof Player) {
+            Player player = (Player) event.getEntity();
+            Random random = new Random();
 
             double amountThorns = DefenseUSBs.getAmountThorns(player);
             LivingEntity damager = (LivingEntity) event.getDamager();
