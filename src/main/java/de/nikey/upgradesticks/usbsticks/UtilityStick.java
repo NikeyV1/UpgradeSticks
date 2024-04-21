@@ -25,7 +25,7 @@ public class UtilityStick implements Listener {
                 LivingEntity victim = (LivingEntity) event.getEntity();
                 Random random = new Random();
                 int amount = UtilityUSBs.getAmountTridentLightning(attacker);
-                int i =  10/amount;
+                int i =  12/amount;
 
                 if (i == 1) {
                     if (random.nextInt(2) == 1) {
