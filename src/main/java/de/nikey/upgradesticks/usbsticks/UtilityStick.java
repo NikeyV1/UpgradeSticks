@@ -19,17 +19,26 @@ import java.util.Random;
 public class UtilityStick implements Listener {
     @EventHandler
     public void onEntityDamageByEntity(EntityDamageByEntityEvent event) {
-        if (event.getDamager() instanceof Player && event.getEntity() instanceof LivingEntity) {
+        if (event.getDamager() instanceof Player && event.getEntity() instanceof LivingEntity || event.getEntity() instanceof Player) {
             Player attacker = (Player) event.getDamager();
             if (attacker.isRiptiding()) {
                 LivingEntity victim = (LivingEntity) event.getEntity();
                 Random random = new Random();
                 int amount = UtilityUSBs.getAmountTridentLightning(attacker);
                 int i =  10/amount;
-                if (random.nextInt(i) == 1) {
-                    LightningStrike lightningStrike = attacker.getWorld().strikeLightningEffect(victim.getLocation());
-                    lightningStrike.setCausingPlayer(attacker);
-                    victim.damage(10);
+
+                if (i == 1) {
+                    if (random.nextInt(2) == 1) {
+                        LightningStrike lightningStrike = attacker.getWorld().strikeLightningEffect(victim.getLocation());
+                        lightningStrike.setCausingPlayer(attacker);
+                        victim.damage(5,attacker);
+                    }
+                }else {
+                    if (random.nextInt(i) == 0) {
+                        LightningStrike lightningStrike = attacker.getWorld().strikeLightningEffect(victim.getLocation());
+                        lightningStrike.setCausingPlayer(attacker);
+                        victim.damage(5,attacker);
+                    }
                 }
             }
 

@@ -79,32 +79,32 @@ public class DefenseStick implements Listener {
             if (amountThorns == 1) {
                 int i = random.nextInt(20);
                 if (i == 10) {
-                    damager.damage(event.getDamage()/2);
+                    damager.damage(event.getDamage(),event.getEntity());
                 }
             }else if (amountThorns == 2) {
                 int i = random.nextInt(10);
                 if (i == 2) {
-                    damager.damage(event.getDamage()/2);
+                    damager.damage(event.getDamage(),event.getEntity());
                 }
             }else if (amountThorns == 3) {
                 int i = random.nextInt(7);
                 if (i == 3) {
-                    damager.damage(event.getDamage()/2);
+                    damager.damage(event.getDamage(),event.getEntity());
                 }
             }else if (amountThorns == 4) {
                 int i = random.nextInt(5);
                 if (i == 2) {
-                    damager.damage(event.getDamage()/2);
+                    damager.damage(event.getDamage(),event.getEntity());
                 }
             }else if (amountThorns == 5) {
                 int i = random.nextInt(4);
                 if (i == 3) {
-                    damager.damage(event.getDamage()/2);
+                    damager.damage(event.getDamage(),event.getEntity());
                 }
             }else if (amountThorns == 6) {
                 int i = random.nextInt(3);
                 if (i == 2) {
-                    damager.damage(event.getDamage()/2);
+                    damager.damage(event.getDamage(),event.getEntity());
                 }
             }
         }

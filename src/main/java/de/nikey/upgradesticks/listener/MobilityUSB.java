@@ -63,14 +63,14 @@ public class MobilityUSB implements Listener {
         Location to = event.getTo();
         if (from.getX() != to.getX()) {
             Random random = new Random();
-            int i = random.nextInt(6000);
+            int i = random.nextInt(12000);
             if (i == 3400) {
                 player.playSound(Sound.sound(Key.key("entity.experience_orb.pickup"), Sound.Source.AMBIENT,1,1));
                 MobilitySticks.WalkSpeedStick(player);
             }
         } else if (from.getZ() != to.getZ()) {
             Random random = new Random();
-            int i = random.nextInt(6000);
+            int i = random.nextInt(12000);
             if (i == 3005) {
                 player.playSound(Sound.sound(Key.key("entity.experience_orb.pickup"), Sound.Source.AMBIENT,1,1));
                 MobilitySticks.WalkSpeedStick(player);
