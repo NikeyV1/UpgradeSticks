@@ -1,11 +1,9 @@
 package de.nikey.upgradesticks.usbsticks;
 
 import de.nikey.upgradesticks.api.UtilityUSBs;
+import io.papermc.paper.event.player.PlayerShieldDisableEvent;
 import org.bukkit.Material;
-import org.bukkit.entity.EntityType;
-import org.bukkit.entity.LightningStrike;
-import org.bukkit.entity.LivingEntity;
-import org.bukkit.entity.Player;
+import org.bukkit.entity.*;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
@@ -85,4 +83,18 @@ public class UtilityStick implements Listener {
         }
     }
 
+    @EventHandler
+    public void onPlayerShieldDisable(PlayerShieldDisableEvent event) {
+        Player player = event.getPlayer();
+        Entity d = event.getDamager();
+        double amount = UtilityUSBs.getAmountShieldBreak(player);
+        int round = (int) Math.round(amount);
+        int i =  20/round;
+        Random random = new Random();
+        if (random.nextInt(i) == 0 && d instanceof LivingEntity) {
+            LivingEntity damager = (LivingEntity) d;
+            damager.damage(4);
+            damager.
+        }
+    }
 }

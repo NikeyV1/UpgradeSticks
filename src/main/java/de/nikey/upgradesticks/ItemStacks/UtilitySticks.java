@@ -41,4 +41,15 @@ public class UtilitySticks {
         stack.setItemMeta(itemMeta);
         player.getInventory().addItem(stack);
     }
+
+    public static void ShieldBreakStick(Player player) {
+        ItemStack stack = new ItemStack(Material.PAPER);
+        ItemMeta itemMeta = stack.getItemMeta();
+        itemMeta.setDisplayName("§aShield Break USB");
+        ArrayList<String> lore = new ArrayList<>();
+        lore.add("§fIncrease chance to damage players breaking your shield by 5%");
+        itemMeta.setLore(lore);
+        stack.setItemMeta(itemMeta);
+        player.getInventory().addItem(stack);
+    }
 }

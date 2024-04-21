@@ -107,6 +107,8 @@ public class USBMenu implements Listener {
                                 UtilitySticks.LuckStick((Player) event.getWhoClicked());
                             }else if (currentItem.getItemMeta().getDisplayName().equalsIgnoreCase("§aAxe Armor Damage USB")) {
                                 UtilitySticks.AxeDurabilityStick((Player) event.getWhoClicked());
+                            }else if (currentItem.getItemMeta().getDisplayName().equalsIgnoreCase("§aShield Break USB")) {
+                                UtilitySticks.ShieldBreakStick((Player) event.getWhoClicked());
                             }
 
                             playerInv.replace((Player) event.getWhoClicked(),inventory);
