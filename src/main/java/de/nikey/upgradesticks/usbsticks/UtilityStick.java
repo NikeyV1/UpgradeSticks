@@ -11,6 +11,7 @@ import org.bukkit.event.player.PlayerToggleSprintEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
+import org.bukkit.util.Vector;
 
 import java.util.Random;
 
@@ -24,7 +25,6 @@ public class UtilityStick implements Listener {
                 Random random = new Random();
                 int amount = UtilityUSBs.getAmountTridentLightning(attacker);
                 int i =  12/amount;
-
                 if (i == 1) {
                     if (random.nextInt(2) == 1) {
                         LightningStrike lightningStrike = attacker.getWorld().strikeLightningEffect(victim.getLocation());
@@ -86,15 +86,18 @@ public class UtilityStick implements Listener {
     @EventHandler
     public void onPlayerShieldDisable(PlayerShieldDisableEvent event) {
         Player player = event.getPlayer();
-        Entity d = event.getDamager();
-        double amount = UtilityUSBs.getAmountShieldBreak(player);
-        int round = (int) Math.round(amount);
-        int i =  20/round;
-        Random random = new Random();
-        if (random.nextInt(i) == 0 && d instanceof LivingEntity) {
-            LivingEntity damager = (LivingEntity) d;
-            damager.damage(4);
-            damager.
+        int amount = UtilityUSBs.getAmountShieldBreak(player);
+        if (amount != 0) {
+            int i = 20/amount;
+            Random random = new Random();
+            if (random.nextInt(i) == 0 && event.getDamager() instanceof LivingEntity) {
+                LivingEntity damager = (LivingEntity) event.getDamager();
+                damager.damage(4);
+                Vector direction = damager.getLocation().getDirection().multiply(-1);
+                direction.add(new Vector(0,0.2,0));
+                damager.setVelocity(direction);
+                event.setCooldown(20);
+            }
         }
     }
 }

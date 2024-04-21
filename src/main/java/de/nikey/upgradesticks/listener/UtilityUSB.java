@@ -2,6 +2,9 @@ package de.nikey.upgradesticks.listener;
 
 import de.nikey.upgradesticks.ItemStacks.UtilitySticks;
 import de.nikey.upgradesticks.UpgradeSticks;
+import io.papermc.paper.event.player.PlayerShieldDisableEvent;
+import net.kyori.adventure.key.Key;
+import net.kyori.adventure.sound.Sound;
 import org.bukkit.Material;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
@@ -24,6 +27,7 @@ public class UtilityUSB implements Listener {
         Random random = new Random();
         if (random.nextInt(3500) == 189) {
             UtilitySticks.TridentLightningStick(player);
+            player.playSound(Sound.sound(Key.key("entity.experience_orb.pickup"), Sound.Source.AMBIENT,1,1));
         }
     }
 
@@ -33,6 +37,7 @@ public class UtilityUSB implements Listener {
         Random random = new Random();
         if (random.nextInt() == 475 && event.getCaught() != null) {
             UtilitySticks.LuckStick(player);
+            player.playSound(Sound.sound(Key.key("entity.experience_orb.pickup"), Sound.Source.AMBIENT,1,1));
         }
     }
 
@@ -45,28 +50,18 @@ public class UtilityUSB implements Listener {
                 Random random = new Random();
                 if (random.nextInt(1000) == 734) {
                     UtilitySticks.AxeDurabilityStick(player);
+                    player.playSound(Sound.sound(Key.key("entity.experience_orb.pickup"), Sound.Source.AMBIENT,1,1));
                 }
             }
         }
     }
 
     @EventHandler
-    public void onPlayerInteract(PlayerInteractEvent event) {
-        Player player = event.getPlayer();
-        if (player.isBlocking()) {
-            new BukkitRunnable() {
-                @Override
-                public void run() {
-                    if (player.isBlocking()) {
-                        Random random = new Random();
-                        if (random.nextInt(30) == 17) {
-                            UtilitySticks.ShieldBreakStick(player);
-                        }
-                    }else {
-                        cancel();
-                    }
-                }
-            }.runTaskTimer(UpgradeSticks.getPlugin(),0,20);
+    public void onPlayerShieldDisable(PlayerShieldDisableEvent event) {
+        Random random = new Random();
+        if (random.nextInt(250) == 56) {
+            UtilitySticks.ShieldBreakStick(event.getPlayer());
+            event.getPlayer().playSound(Sound.sound(Key.key("entity.experience_orb.pickup"), Sound.Source.AMBIENT,1,1));
         }
     }
 }
