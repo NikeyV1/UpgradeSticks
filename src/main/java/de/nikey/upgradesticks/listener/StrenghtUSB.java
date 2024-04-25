@@ -48,6 +48,27 @@ public class StrenghtUSB implements Listener {
                     killer.playSound(Sound.sound(Key.key("entity.experience_orb.pickup"), Sound.Source.AMBIENT,1,1));
                     StrenghSticks.DistantDamageStick(killer);
                 }
+            }else if (entity instanceof Creeper) {
+                Random random = new Random();
+                int i = random.nextInt(300);
+                if (i == 251) {
+                    killer.playSound(Sound.sound(Key.key("entity.experience_orb.pickup"), Sound.Source.AMBIENT,1,1));
+                    StrenghSticks.ExplosionDamageStick(killer);
+                }
+            }else if (entity instanceof Wither) {
+                Random random = new Random();
+                int i = random.nextInt(30);
+                if (i == 21) {
+                    killer.playSound(Sound.sound(Key.key("entity.experience_orb.pickup"), Sound.Source.AMBIENT,1,1));
+                    StrenghSticks.DamageStick(killer);
+                }
+            }else if (entity instanceof EnderDragon) {
+                Random random = new Random();
+                int i = random.nextInt(30);
+                if (i == 23) {
+                    killer.playSound(Sound.sound(Key.key("entity.experience_orb.pickup"), Sound.Source.AMBIENT,1,1));
+                    StrenghSticks.DamageStick(killer);
+                }
             }
         }
     }

@@ -7,6 +7,7 @@ import org.bukkit.entity.*;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
+import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.player.PlayerToggleSprintEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.potion.PotionEffect;
@@ -29,13 +30,13 @@ public class UtilityStick implements Listener {
                     if (random.nextInt(2) == 1) {
                         LightningStrike lightningStrike = attacker.getWorld().strikeLightningEffect(victim.getLocation());
                         lightningStrike.setCausingPlayer(attacker);
-                        victim.damage(5,attacker);
+                        victim.damage(7,attacker);
                     }
                 }else {
                     if (random.nextInt(i) == 0) {
                         LightningStrike lightningStrike = attacker.getWorld().strikeLightningEffect(victim.getLocation());
                         lightningStrike.setCausingPlayer(attacker);
-                        victim.damage(5,attacker);
+                        victim.damage(7,attacker);
                     }
                 }
             }
@@ -51,6 +52,7 @@ public class UtilityStick implements Listener {
                 }
             }
         }
+
     }
 
     @EventHandler
@@ -63,7 +65,6 @@ public class UtilityStick implements Listener {
             player.removePotionEffect(PotionEffectType.LUCK);
         }
     }
-
 
     private void damageRandomArmorPiece(Player player) {
         ItemStack[] armorContents = player.getInventory().getArmorContents();

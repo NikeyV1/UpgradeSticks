@@ -54,12 +54,16 @@ public class USBMenu implements Listener {
                         if (currentItem.getItemMeta().getDisplayName().contains("§c")) {
                             Inventory inventory = playerInv.get(event.getWhoClicked());
                             inventory.setItem(event.getSlot(),new ItemStack(Material.RED_STAINED_GLASS_PANE));
-                            if (currentItem.getItemMeta().getDisplayName().equalsIgnoreCase("§cDamage USB (Close)")) {
+                            if (currentItem.getItemMeta().getDisplayName().equalsIgnoreCase("§cMain Damage USB (Close)")) {
                                 StrenghSticks.CloseDamageStick((Player) event.getWhoClicked());
-                            } else if (currentItem.getItemMeta().getDisplayName().equalsIgnoreCase("§cDamage USB (Distant)")) {
+                            } else if (currentItem.getItemMeta().getDisplayName().equalsIgnoreCase("§cMain Damage USB (Distant)")) {
                                 StrenghSticks.DistantDamageStick((Player) event.getWhoClicked());
                             }else if (currentItem.getItemMeta().getDisplayName().equalsIgnoreCase("§cAttack Speed USB")) {
                                 StrenghSticks.AttackSpeed((Player) event.getWhoClicked());
+                            }else if (currentItem.getItemMeta().getDisplayName().equalsIgnoreCase("§cExplosion Damage USB")) {
+                                StrenghSticks.ExplosionDamageStick((Player) event.getWhoClicked());
+                            }else if (currentItem.getItemMeta().getDisplayName().equalsIgnoreCase("§cDamage USB")) {
+                                StrenghSticks.DamageStick((Player) event.getWhoClicked());
                             }
                             playerInv.replace((Player) event.getWhoClicked(),inventory);
                             savePlayerBackpack(((Player) event.getWhoClicked()).getPlayer());

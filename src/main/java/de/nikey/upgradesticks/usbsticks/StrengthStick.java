@@ -7,6 +7,7 @@ import org.bukkit.entity.Projectile;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
+import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.player.PlayerToggleSprintEvent;
 
 public class StrengthStick implements Listener {
@@ -26,17 +27,37 @@ public class StrengthStick implements Listener {
         if (event.getDamager() instanceof Player) {
             Player player = (Player) event.getDamager();
             if (player.getLocation().distance(event.getEntity().getLocation()) < 5) {
-                double amount = StrenghtUSBs.getAmountDamageClose(player);
+                if (event.getCause() == EntityDamageEvent.DamageCause.ENTITY_ATTACK || event.getCause() == EntityDamageEvent.DamageCause.ENTITY_SWEEP_ATTACK) {
+                    double amount = StrenghtUSBs.getAmountDamageClose(player);
 
-                amount =  amount*7.5;
-                amount = amount/100 +1;
-                event.setDamage(event.getDamage() * amount);
+                    amount =  amount*7.5;
+                    amount = amount/100 +1;
+                    event.setDamage(event.getDamage() * amount);
+                }
             }else {
-                double amount = StrenghtUSBs.getAmountDamageFar(player);
+                if (event.getCause() == EntityDamageEvent.DamageCause.ENTITY_ATTACK || event.getCause() == EntityDamageEvent.DamageCause.ENTITY_SWEEP_ATTACK || event.getCause() == EntityDamageEvent.DamageCause.PROJECTILE || event.getCause() == EntityDamageEvent.DamageCause.ENTITY_EXPLOSION) {
+                    double amount = StrenghtUSBs.getAmountDamageFar(player);
+
+                    amount =  amount*7.5;
+                    amount = amount/100 +1;
+                    event.setDamage(event.getDamage() * amount);
+                }
+            }
+
+            if (event.getCause() == EntityDamageEvent.DamageCause.ENTITY_EXPLOSION || event.getCause() == EntityDamageEvent.DamageCause.BLOCK_EXPLOSION) {
+                double amount = StrenghtUSBs.getAmountExplosion(player);
 
                 amount =  amount*7.5;
                 amount = amount/100 +1;
                 event.setDamage(event.getDamage() * amount);
+            }
+
+            double amountDamage = StrenghtUSBs.getAmountDamage(player);
+            if (amountDamage != 0) {
+                amountDamage =  amountDamage*5;
+                amountDamage = amountDamage/100 +1;
+
+                event.setDamage(event.getDamage() * amountDamage);
             }
         } else if (event.getDamager() instanceof Projectile) {
             Projectile proj = (Projectile) event.getDamager();
@@ -48,6 +69,13 @@ public class StrengthStick implements Listener {
                     amount =  amount*7.5;
                     amount = amount/100 +1;
                     event.setDamage(event.getDamage() * amount);
+                }
+                double amountDamage = StrenghtUSBs.getAmountDamage(shooter);
+                if (amountDamage != 0) {
+                    amountDamage =  amountDamage*5;
+                    amountDamage = amountDamage/100 +1;
+
+                    event.setDamage(event.getDamage() * amountDamage);
                 }
             }
         }

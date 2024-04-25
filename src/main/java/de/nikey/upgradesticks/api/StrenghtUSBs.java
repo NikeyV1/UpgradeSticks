@@ -15,7 +15,7 @@ public class StrenghtUSBs {
         if (inventory != null) {
             for (ItemStack item : inventory.getContents()) {
                 if (item != null && item.getType() == Material.PAPER && item.hasItemMeta()) {
-                    if (item.getItemMeta().getDisplayName().equalsIgnoreCase("§cDamage USB (Close)")){
+                    if (item.getItemMeta().getDisplayName().equalsIgnoreCase("§cMain Damage USB (Close)")){
                         amount += 1;
                     }
                 }
@@ -31,7 +31,7 @@ public class StrenghtUSBs {
         if (inventory != null) {
             for (ItemStack item : inventory.getContents()) {
                 if (item != null && item.getType() == Material.PAPER && item.hasItemMeta()) {
-                    if (item.getItemMeta().getDisplayName().equalsIgnoreCase("§cDamage USB (Distant)")){
+                    if (item.getItemMeta().getDisplayName().equalsIgnoreCase("§cMain Damage USB (Distant)")){
                         amount += 1;
                     }
                 }
@@ -48,6 +48,38 @@ public class StrenghtUSBs {
             for (ItemStack item : inventory.getContents()) {
                 if (item != null && item.getType() == Material.PAPER && item.hasItemMeta()) {
                     if (item.getItemMeta().getDisplayName().equalsIgnoreCase("§cAttack Speed USB")){
+                        amount += 1;
+                    }
+                }
+            }
+        }
+        return amount;
+    }
+
+    public static int getAmountExplosion(Player player) {
+        Inventory inventory = USBMenu.playerInv.get(player);
+        int amount = 0;
+        // Durch das Inventar des Spielers iterieren
+        if (inventory != null) {
+            for (ItemStack item : inventory.getContents()) {
+                if (item != null && item.getType() == Material.PAPER && item.hasItemMeta()) {
+                    if (item.getItemMeta().getDisplayName().equalsIgnoreCase("§cExplosion Damage USB")){
+                        amount += 1;
+                    }
+                }
+            }
+        }
+        return amount;
+    }
+
+    public static int getAmountDamage(Player player) {
+        Inventory inventory = USBMenu.playerInv.get(player);
+        int amount = 0;
+        // Durch das Inventar des Spielers iterieren
+        if (inventory != null) {
+            for (ItemStack item : inventory.getContents()) {
+                if (item != null && item.getType() == Material.PAPER && item.hasItemMeta()) {
+                    if (item.getItemMeta().getDisplayName().equalsIgnoreCase("§cDamage USB")){
                         amount += 1;
                     }
                 }
