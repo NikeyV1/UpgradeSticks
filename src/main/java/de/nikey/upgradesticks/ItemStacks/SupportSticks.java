@@ -1,18 +1,22 @@
 package de.nikey.upgradesticks.ItemStacks;
 
+import io.papermc.paper.event.player.PlayerItemCooldownEvent;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
+import org.bukkit.event.EventHandler;
+import org.bukkit.event.Listener;
+import org.bukkit.event.entity.FoodLevelChangeEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
 import java.util.ArrayList;
 
-public class SupportSticks{
+public class SupportSticks implements Listener {
 
     public static void HeartRegenerationStick(Player player) {
         ItemStack stack = new ItemStack(Material.PAPER);
         ItemMeta itemMeta = stack.getItemMeta();
-        itemMeta.setDisplayName("§dHeart Regeneration USB");
+        itemMeta.setDisplayName("§7Heart Regeneration USB");
         ArrayList<String> lore = new ArrayList<>();
         lore.add("§fIncrease Heart regeneration");
         lore.add("§f+20%");
@@ -24,7 +28,7 @@ public class SupportSticks{
     public static void ArrowSaverStick(Player player) {
         ItemStack stack = new ItemStack(Material.PAPER);
         ItemMeta itemMeta = stack.getItemMeta();
-        itemMeta.setDisplayName("§dArrow Saver USB");
+        itemMeta.setDisplayName("§7Arrow Saver USB");
         ArrayList<String> lore = new ArrayList<>();
         lore.add("§fDecreases amount of arrows used");
         lore.add("§f-15%");
@@ -36,7 +40,7 @@ public class SupportSticks{
     public static void DurabilitySaverStick(Player player) {
         ItemStack stack = new ItemStack(Material.PAPER);
         ItemMeta itemMeta = stack.getItemMeta();
-        itemMeta.setDisplayName("§dDurability Saver USB");
+        itemMeta.setDisplayName("§7Durability Saver USB");
         ArrayList<String> lore = new ArrayList<>();
         lore.add("§fDecreases amount of durability used");
         lore.add("§f-20%");
@@ -48,7 +52,7 @@ public class SupportSticks{
     public static void LifeRecoveryStick(Player player) {
         ItemStack stack = new ItemStack(Material.PAPER);
         ItemMeta itemMeta = stack.getItemMeta();
-        itemMeta.setDisplayName("§dLife Recovery USB");
+        itemMeta.setDisplayName("§7Life Recovery USB");
         ArrayList<String> lore = new ArrayList<>();
         lore.add("§fRegenerate hearts by defeating mobs");
         lore.add("§f+4%");
@@ -60,13 +64,36 @@ public class SupportSticks{
     public static void HomingArrowsStick(Player player) {
         ItemStack stack = new ItemStack(Material.PAPER);
         ItemMeta itemMeta = stack.getItemMeta();
-        itemMeta.setDisplayName("§dLife Recovery USB");
+        itemMeta.setDisplayName("§7Homing Arrows USB");
         ArrayList<String> lore = new ArrayList<>();
-        lore.add("§fRegenerate hearts by defeating mobs");
-        lore.add("§f+4%");
+        lore.add("§fCauses arrows to track targets");
+        lore.add("§f+12%");
         itemMeta.setLore(lore);
         stack.setItemMeta(itemMeta);
         player.getInventory().addItem(stack);
     }
 
+    public static void ItemCooldownStick(Player player) {
+        ItemStack stack = new ItemStack(Material.PAPER);
+        ItemMeta itemMeta = stack.getItemMeta();
+        itemMeta.setDisplayName("§7Item Cooldown USB");
+        ArrayList<String> lore = new ArrayList<>();
+        lore.add("§fDecreases item cooldown time");
+        lore.add("§f-15%");
+        itemMeta.setLore(lore);
+        stack.setItemMeta(itemMeta);
+        player.getInventory().addItem(stack);
+    }
+
+    public static void PotionDurationStick(Player player) {
+        ItemStack stack = new ItemStack(Material.PAPER);
+        ItemMeta itemMeta = stack.getItemMeta();
+        itemMeta.setDisplayName("§7Potion Duration USB");
+        ArrayList<String> lore = new ArrayList<>();
+        lore.add("§fIncreases potion duration");
+        lore.add("§f+15%");
+        itemMeta.setLore(lore);
+        stack.setItemMeta(itemMeta);
+        player.getInventory().addItem(stack);
+    }
 }

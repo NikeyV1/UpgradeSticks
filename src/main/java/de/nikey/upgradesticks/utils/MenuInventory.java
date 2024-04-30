@@ -86,7 +86,10 @@ public class MenuInventory {
         grayMeta.setDisplayName("§c");
         GrayGlass.setItemMeta(grayMeta);
 
-
+        ItemStack a = new ItemStack(Material.MAGENTA_GLAZED_TERRACOTTA);
+        ItemMeta m = a.getItemMeta();
+        m.setDisplayName("First Page");
+        a.setItemMeta(m);
 
         for (int i = 0; i < inv.getSize(); i++) {
             // Check if the slot is empty
@@ -110,6 +113,10 @@ public class MenuInventory {
                     case 13:
                     case 14:
                         inv.setItem(i, GrayGlass);
+                        break;
+                    case 8:
+                    case 17:
+                        inv.setItem(i, a);
                         break;
                 }
             }

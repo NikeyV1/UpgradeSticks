@@ -1,10 +1,9 @@
-package de.nikey.upgradesticks.listener;
+package de.nikey.upgradesticks.utils;
 
 import de.nikey.upgradesticks.ItemStacks.DefenseSticks;
 import de.nikey.upgradesticks.ItemStacks.MobilitySticks;
 import de.nikey.upgradesticks.ItemStacks.UtilitySticks;
 import de.nikey.upgradesticks.UpgradeSticks;
-import de.nikey.upgradesticks.utils.MenuInventory;
 import de.nikey.upgradesticks.ItemStacks.StrenghSticks;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
@@ -25,7 +24,6 @@ import java.util.*;
 @SuppressWarnings("ALL")
 public class USBMenu implements Listener {
     private static FileConfiguration playerDataConfig;
-    private static File dataFile;
     public static Map<UUID, List<ItemStack>> playerMenus = new HashMap<>();
     public static HashMap<Player, Inventory > playerInv = new HashMap<>();
 
@@ -42,13 +40,15 @@ public class USBMenu implements Listener {
     @EventHandler
     public void onInventoryClick(InventoryClickEvent event) {
         Inventory clickedInventory = event.getClickedInventory();
-        Inventory playerInventory = event.getWhoClicked().getInventory();
 
         if (clickedInventory != null) {
             if (event.getView().getTitle().equalsIgnoreCase("USB Menu")) {
                 event.setCancelled(true);
                 //Menü
                 if (clickedInventory == playerInv.get(event.getWhoClicked())) {
+                    if (event.getCurrentItem() != null && event.getCurrentItem().getType() == Material.MAGENTA_GLAZED_TERRACOTTA) {
+                        nextPage((Player) event.getWhoClicked());
+                    }
                     if (event.getCurrentItem() != null && event.getCurrentItem().getType() == Material.PAPER) {
                         ItemStack currentItem = event.getCurrentItem();
                         if (currentItem.getItemMeta().getDisplayName().contains("§c")) {
@@ -184,7 +184,7 @@ public class USBMenu implements Listener {
         savePlayerBackpack(player);
     }
 
-    private void openMenu(Player player) {
+    public static void openMenu(Player player) {
         Inventory inv = Bukkit.createInventory(null, 27, "USB Menu");
         List<ItemStack> contents = getPlayerBackpackContents(player);
         if (contents != null) {
@@ -195,12 +195,30 @@ public class USBMenu implements Listener {
         player.openInventory(inv);
     }
 
-    private void savePlayerBackpack(Player player) {
-        playerMenus.put(player.getUniqueId(), new ArrayList<>(List.of(playerInv.get(player).getContents())));
+    private static List<ItemStack> getPlayerBackpackContents(Player player) {
+        return playerMenus.getOrDefault(player.getUniqueId(), null);
     }
 
-    private List<ItemStack> getPlayerBackpackContents(Player player) {
-        return playerMenus.getOrDefault(player.getUniqueId(), null);
+    private void nextPage(Player player) {
+        UUID playerId = player.getUniqueId();
+        List<List<ItemStack>> pages = Collections.singletonList(playerMenus.getOrDefault(playerId, new ArrayList<>()));
+        int currentPage = 0;
+        if (!pages.isEmpty()) {
+            currentPage = (currentPage + 1) % pages.size();
+        }
+        Inventory inv = playerInv.get(player);
+        List<ItemStack> contents = pages.get(currentPage);
+        if (contents != null) {
+            inv.setContents(contents.toArray(new ItemStack[0]));
+            player.updateInventory();
+        }
+    }
+
+    private void savePlayerBackpack(Player player) {
+        List<List<ItemStack>> pages = Collections.singletonList(playerMenus.computeIfAbsent(player.getUniqueId(), k -> new ArrayList<>()));
+        int currentPage = 0;
+        Inventory inv = playerInv.get(player);
+        pages.set(currentPage, new ArrayList<>(Arrays.asList(inv.getContents())));
     }
 
     public static void loadPlayerData() {
@@ -209,15 +227,22 @@ public class USBMenu implements Listener {
         if (playerData != null) {
             for (String uuidString : playerData.getKeys(false)) {
                 UUID uuid = UUID.fromString(uuidString);
-                List<?> contents = playerData.getList(uuidString);
-                if (contents != null) {
-                    List<ItemStack> backpackContents = new ArrayList<>();
-                    for (Object item : contents) {
-                        if (item instanceof ItemStack) {
-                            backpackContents.add((ItemStack) item);
+                List<?> pagesList = playerData.getList(uuidString);
+                if (pagesList != null) {
+                    List<ItemStack> pages = new ArrayList<>();
+                    for (Object pageObj : pagesList) {
+                        if (pageObj instanceof List<?>) {
+                            List<?> page = (List<?>) pageObj;
+                            List<ItemStack> contents = new ArrayList<>();
+                            for (Object item : page) {
+                                if (item instanceof ItemStack) {
+                                    contents.add((ItemStack) item);
+                                }
+                            }
+                            pages.add((ItemStack) contents);
                         }
                     }
-                    playerMenus.put(uuid, backpackContents);
+                    playerMenus.put(uuid, pages);
                 }
             }
         }
@@ -225,7 +250,12 @@ public class USBMenu implements Listener {
 
     public static void savePlayerData() {
         for (UUID uuid : playerMenus.keySet()) {
-            playerDataConfig.set("playerMenus." + uuid.toString(), playerMenus.get(uuid));
+            List<List<ItemStack>> pages = Collections.singletonList(playerMenus.get(uuid));
+            List<List<ItemStack>> serializedPages = new ArrayList<>();
+            for (List<ItemStack> page : pages) {
+                serializedPages.add(new ArrayList<>(page));
+            }
+            playerDataConfig.set("playerMenus." + uuid.toString(), serializedPages);
         }
         UpgradeSticks.getPlugin().saveConfig();
     }

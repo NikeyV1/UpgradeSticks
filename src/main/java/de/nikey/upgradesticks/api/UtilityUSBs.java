@@ -1,6 +1,6 @@
 package de.nikey.upgradesticks.api;
 
-import de.nikey.upgradesticks.listener.USBMenu;
+import de.nikey.upgradesticks.utils.USBMenu;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
