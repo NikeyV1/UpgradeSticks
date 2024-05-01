@@ -15,9 +15,9 @@ public class StrengthStick implements Listener {
     public void onPlayerToggleSprint(PlayerToggleSprintEvent event) {
         Player player = event.getPlayer();
         double amount = StrenghtUSBs.getAmountAttackSpeed(player);
-        amount =  amount*5;
+        amount =  amount*7.5;
         amount = amount/100;
-        amount=amount*1.5;
+        amount=amount*2;
 
         player.getAttribute(Attribute.GENERIC_ATTACK_SPEED).setBaseValue(4+amount);
     }
@@ -30,7 +30,7 @@ public class StrengthStick implements Listener {
                 if (event.getCause() == EntityDamageEvent.DamageCause.ENTITY_ATTACK || event.getCause() == EntityDamageEvent.DamageCause.ENTITY_SWEEP_ATTACK) {
                     double amount = StrenghtUSBs.getAmountDamageClose(player);
 
-                    amount =  amount*7.5;
+                    amount =  amount*12.5;
                     amount = amount/100 +1;
                     event.setDamage(event.getDamage() * amount);
                 }
@@ -38,7 +38,7 @@ public class StrengthStick implements Listener {
                 if (event.getCause() == EntityDamageEvent.DamageCause.ENTITY_ATTACK || event.getCause() == EntityDamageEvent.DamageCause.ENTITY_SWEEP_ATTACK || event.getCause() == EntityDamageEvent.DamageCause.PROJECTILE || event.getCause() == EntityDamageEvent.DamageCause.ENTITY_EXPLOSION) {
                     double amount = StrenghtUSBs.getAmountDamageFar(player);
 
-                    amount =  amount*7.5;
+                    amount =  amount*12.5;
                     amount = amount/100 +1;
                     event.setDamage(event.getDamage() * amount);
                 }
@@ -47,14 +47,14 @@ public class StrengthStick implements Listener {
             if (event.getCause() == EntityDamageEvent.DamageCause.ENTITY_EXPLOSION || event.getCause() == EntityDamageEvent.DamageCause.BLOCK_EXPLOSION) {
                 double amount = StrenghtUSBs.getAmountExplosion(player);
 
-                amount =  amount*7.5;
+                amount =  amount*15;
                 amount = amount/100 +1;
                 event.setDamage(event.getDamage() * amount);
             }
 
             double amountDamage = StrenghtUSBs.getAmountDamage(player);
             if (amountDamage != 0) {
-                amountDamage =  amountDamage*5;
+                amountDamage =  amountDamage*7.5;
                 amountDamage = amountDamage/100 +1;
 
                 event.setDamage(event.getDamage() * amountDamage);
@@ -66,13 +66,13 @@ public class StrengthStick implements Listener {
                 if (shooter.getLocation().distance(event.getEntity().getLocation()) > 5) {
                     double amount = StrenghtUSBs.getAmountDamageFar(shooter);
 
-                    amount =  amount*7.5;
+                    amount =  amount*12.5;
                     amount = amount/100 +1;
                     event.setDamage(event.getDamage() * amount);
                 }
                 double amountDamage = StrenghtUSBs.getAmountDamage(shooter);
                 if (amountDamage != 0) {
-                    amountDamage =  amountDamage*5;
+                    amountDamage =  amountDamage*7.5;
                     amountDamage = amountDamage/100 +1;
 
                     event.setDamage(event.getDamage() * amountDamage);

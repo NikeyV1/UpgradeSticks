@@ -14,7 +14,8 @@ public class UtilitySticks {
         ItemMeta itemMeta = stack.getItemMeta();
         itemMeta.setDisplayName("§aLightning Riptide USB");
         ArrayList<String> lore = new ArrayList<>();
-        lore.add("§fIncrease chance to strike lightning when damaging player with riptide by 8% ");
+        lore.add("§fIncrease chance to strike lightning when damaging player with riptide");
+        lore.add("§f+8%");
         itemMeta.setLore(lore);
         stack.setItemMeta(itemMeta);
         player.getInventory().addItem(stack);

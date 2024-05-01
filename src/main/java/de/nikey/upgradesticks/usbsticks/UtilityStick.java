@@ -7,7 +7,6 @@ import org.bukkit.entity.*;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
-import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.player.PlayerToggleSprintEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.potion.PotionEffect;
@@ -24,19 +23,21 @@ public class UtilityStick implements Listener {
             if (attacker.isRiptiding()) {
                 LivingEntity victim = (LivingEntity) event.getEntity();
                 Random random = new Random();
-                int amount = UtilityUSBs.getAmountTridentLightning(attacker);
-                int i =  12/amount;
-                if (i == 1) {
+                double amount = UtilityUSBs.getAmountTridentLightning(attacker);
+                amount = amount*0.08;
+                amount = 1/amount;
+                int round = (int) Math.round(amount);
+                if (round == 1) {
                     if (random.nextInt(2) == 1) {
                         LightningStrike lightningStrike = attacker.getWorld().strikeLightningEffect(victim.getLocation());
                         lightningStrike.setCausingPlayer(attacker);
-                        victim.damage(7,attacker);
+                        victim.damage(6,attacker);
                     }
                 }else {
-                    if (random.nextInt(i) == 0) {
+                    if (random.nextInt(round) == 0) {
                         LightningStrike lightningStrike = attacker.getWorld().strikeLightningEffect(victim.getLocation());
                         lightningStrike.setCausingPlayer(attacker);
-                        victim.damage(7,attacker);
+                        victim.damage(6,attacker);
                     }
                 }
             }
@@ -45,8 +46,9 @@ public class UtilityStick implements Listener {
                 if (attacker.getInventory().getItemInMainHand().getType() == Material.NETHERITE_AXE || attacker.getInventory().getItemInMainHand().getType() == Material.DIAMOND_AXE || attacker.getInventory().getItemInMainHand().getType() == Material.IRON_AXE) {
                     int amount = UtilityUSBs.getAmountAxeDurability(attacker);
                     double i = 2.5* amount;
+                    int round = (int) Math.round(i);
                     Random random = new Random();
-                    if (random.nextInt((int) i) == 1) {
+                    if (random.nextInt(round) == 0) {
                         damageRandomArmorPiece((Player) event.getEntity());
                     }
                 }

@@ -21,7 +21,7 @@ import java.util.HashMap;
 import java.util.List;
 
 @SuppressWarnings("ALL")
-public class menu implements Listener {
+public class Menu implements Listener {
 
     public static HashMap<Player, ItemStack[]> menuContents = new HashMap<>();
     public static HashMap<Player, Inventory> invMenu = new HashMap<>();
@@ -269,7 +269,22 @@ public class menu implements Listener {
                             }
                         }
                     } else if (event.getView().getTitle().equalsIgnoreCase("USB Menu 2")) {
-
+                        if (event.getCurrentItem() != null && event.getCurrentItem().getType() == Material.PAPER) {
+                            Inventory inventory = event.getView().getTopInventory();
+                            if (item.getItemMeta().getDisplayName().contains("§7")) {
+                                int first = inventory.first(Material.GRAY_STAINED_GLASS_PANE);
+                                if (first != -1) {
+                                    item.setAmount(item.getAmount()-1);
+                                    ItemStack stack = new ItemStack(Material.PAPER);
+                                    stack.setItemMeta(item.getItemMeta());
+                                    stack.setAmount(1);
+                                    Inventory inv = invMenu2.get(event.getWhoClicked());
+                                    inv.setItem(first,stack);
+                                    invMenu2.replace((Player) event.getWhoClicked(),inv);
+                                    menuContents2.put((Player) event.getWhoClicked(), inventory.getContents());
+                                }
+                            }
+                        }
                     }
                 }
             }

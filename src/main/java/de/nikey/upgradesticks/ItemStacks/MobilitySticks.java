@@ -14,7 +14,8 @@ public class MobilitySticks {
         ItemMeta itemMeta = stack.getItemMeta();
         itemMeta.setDisplayName("§eWalk Speed USB");
         ArrayList<String> lore = new ArrayList<>();
-        lore.add("§fIncrease movement speed by +8%");
+        lore.add("§fIncreases walk speed");
+        lore.add("§f+10%");
         itemMeta.setLore(lore);
         stack.setItemMeta(itemMeta);
         player.getInventory().addItem(stack);
@@ -25,7 +26,8 @@ public class MobilitySticks {
         ItemMeta itemMeta = stack.getItemMeta();
         itemMeta.setDisplayName("§eSwim Speed USB");
         ArrayList<String> lore = new ArrayList<>();
-        lore.add("§fIncrease swimming speed by +10%");
+        lore.add("§fIncreases swimming speed");
+        lore.add("§f+10%");
         itemMeta.setLore(lore);
         stack.setItemMeta(itemMeta);
         player.getInventory().addItem(stack);
@@ -36,7 +38,8 @@ public class MobilitySticks {
         ItemMeta itemMeta = stack.getItemMeta();
         itemMeta.setDisplayName("§eHunger Move USB");
         ArrayList<String> lore = new ArrayList<>();
-        lore.add("§fIncrease chance to gain 1 hunger back by 0.001%");
+        lore.add("§fIncreases chance to gain 1 hunger back");
+        lore.add("§f+0.001%");
         itemMeta.setLore(lore);
         stack.setItemMeta(itemMeta);
         player.getInventory().addItem(stack);
@@ -47,7 +50,8 @@ public class MobilitySticks {
         ItemMeta itemMeta = stack.getItemMeta();
         itemMeta.setDisplayName("§eExperience Move USB");
         ArrayList<String> lore = new ArrayList<>();
-        lore.add("§fIncrease chance to gain 1 experience by 0.001% ");
+        lore.add("§fIncreases chance to gain 1 experience point");
+        lore.add("§f+0.001%");
         itemMeta.setLore(lore);
         stack.setItemMeta(itemMeta);
         player.getInventory().addItem(stack);

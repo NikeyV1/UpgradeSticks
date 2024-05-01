@@ -25,12 +25,12 @@ public class DefenseUSB implements Listener {
         String name = event.getItem().getType().name().toLowerCase();
         if (name.contains("helmet") || name.contains("chestplate") || name.contains("leggings") || name.contains("boots")) {
             Random random = new Random();
-            if (random.nextInt(1700) == 333) {
+            if (random.nextInt(1000) == 333) {
                 event.getPlayer().playSound(Sound.sound(Key.key("entity.guardian.ambient"), Sound.Source.AMBIENT,1,1));
                 DefenseSticks.ArmorStick(event.getPlayer());
             }
 
-            if (random.nextInt(1600) == 875) {
+            if (random.nextInt(950) == 875) {
                 event.getPlayer().playSound(Sound.sound(Key.key("entity.guardian.ambient"), Sound.Source.AMBIENT,1,1));
                 DefenseSticks.ArmorToughnessStick(event.getPlayer());
             }

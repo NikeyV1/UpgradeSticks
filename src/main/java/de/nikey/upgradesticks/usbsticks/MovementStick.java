@@ -16,9 +16,9 @@ public class MovementStick implements Listener {
         Player player = event.getPlayer();
         double amount = MobilityUSBs.getAmountWalkSpeed(player);
 
-        amount =  amount*8;
+        amount =  amount*10;
         amount = amount/100 +1;
-        player.setWalkSpeed((float) (0.2*amount));
+        player.setWalkSpeed((float) (0.1*amount));
     }
     @EventHandler
     void onMove(PlayerMoveEvent e) {
@@ -32,71 +32,21 @@ public class MovementStick implements Listener {
                 player.setVelocity(player.getLocation().getDirection().multiply(amount));
             }
         }else {
-            int amount = MobilityUSBs.getAmountHungerMove(player);
+            double amount = MobilityUSBs.getAmountHungerMove(player);
+            amount = amount*0.001;
+            amount = 1/amount;
             Random random = new Random();
-            if (amount == 1) {
-                int i = random.nextInt(1000);
-                if (i == 500) {
-                    player.setFoodLevel(player.getFoodLevel()+1);
-                }
-            }else if (amount == 2) {
-                int i = random.nextInt(500);
-                if (i == 90) {
-                    player.setFoodLevel(player.getFoodLevel()+1);
-                }
-            }else if (amount == 3) {
-                int i = random.nextInt(333);
-                if (i == 260) {
-                    player.setFoodLevel(player.getFoodLevel()+1);
-                }
-            }else if (amount == 4) {
-                int i = random.nextInt(250);
-                if (i == 160) {
-                    player.setFoodLevel(player.getFoodLevel()+1);
-                }
-            }else if (amount == 5) {
-                int i = random.nextInt(200);
-                if (i == 160) {
-                    player.setFoodLevel(player.getFoodLevel()+1);
-                }
-            }else if (amount == 6) {
-                int i = random.nextInt(167);
-                if (i == 160) {
-                    player.setFoodLevel(player.getFoodLevel()+1);
-                }
+            int i = random.nextInt((int) amount);
+            if (i == 6) {
+                player.setFoodLevel(player.getFoodLevel()+1);
             }
 
-            int a = MobilityUSBs.getAmountExpMove(player);
-            if (a == 1) {
-                int i = random.nextInt(1000);
-                if (i == 100) {
-                    player.giveExp(1);
-                }
-            }else if (a == 2) {
-                int i = random.nextInt(500);
-                if (i == 60) {
-                    player.giveExp(1);
-                }
-            }else if (a == 3) {
-                int i = random.nextInt(333);
-                if (i == 30) {
-                    player.giveExp(1);
-                }
-            }else if (a == 4) {
-                int i = random.nextInt(250);
-                if (i == 30) {
-                    player.giveExp(1);
-                }
-            }else if (a == 5) {
-                int i = random.nextInt(200);
-                if (i == 20) {
-                    player.giveExp(1);
-                }
-            }else if (a == 6) {
-                int i = random.nextInt(167);
-                if (i == 20) {
-                    player.giveExp(1);
-                }
+            double a = MobilityUSBs.getAmountExpMove(player);
+            a = a*0.001;
+            a = 1/a;
+            int r = random.nextInt((int) a);
+            if (r == 4) {
+                player.giveExp(1);
             }
         }
     }

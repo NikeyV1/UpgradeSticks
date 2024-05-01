@@ -5,9 +5,7 @@ import de.nikey.upgradesticks.usbsticks.DefenseStick;
 import de.nikey.upgradesticks.usbsticks.MovementStick;
 import de.nikey.upgradesticks.usbsticks.StrengthStick;
 import de.nikey.upgradesticks.usbsticks.UtilityStick;
-import de.nikey.upgradesticks.utils.SecondPage;
-import de.nikey.upgradesticks.utils.USBMenu;
-import de.nikey.upgradesticks.utils.menu;
+import de.nikey.upgradesticks.utils.Menu;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -19,11 +17,11 @@ public final class UpgradeSticks extends JavaPlugin {
     @Override
     public void onEnable() {
         plugin = this;
-        menu.loadMenu1();
-        menu.loadMenu2();
+        Menu.loadMenu1();
+        Menu.loadMenu2();
 
         PluginManager pm = Bukkit.getPluginManager();
-        pm.registerEvents(new menu(),this);
+        pm.registerEvents(new Menu(),this);
         pm.registerEvents(new StrengthStick(),this);
         pm.registerEvents(new StrenghtUSB(),this);
         pm.registerEvents(new MobilityUSB(),this);
@@ -39,8 +37,8 @@ public final class UpgradeSticks extends JavaPlugin {
 
     @Override
     public void onDisable() {
-        menu.saveMenu1();
-        menu.saveMenu2();
+        Menu.saveMenu1();
+        Menu.saveMenu2();
     }
 
     public static UpgradeSticks getPlugin() {

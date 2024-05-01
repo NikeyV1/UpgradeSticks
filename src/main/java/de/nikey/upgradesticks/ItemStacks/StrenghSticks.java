@@ -14,7 +14,8 @@ public class StrenghSticks {
         ItemMeta itemMeta = stack.getItemMeta();
         itemMeta.setDisplayName("§cMain Damage USB (Close)");
         ArrayList<String> lore = new ArrayList<>();
-        lore.add("§fIncrease damage by +7.5% Damage to close targets");
+        lore.add("§fIncreases damage dealt with your main weapon to close targets");
+        lore.add("§f+12.5%");
         itemMeta.setLore(lore);
         stack.setItemMeta(itemMeta);
         player.getInventory().addItem(stack);
@@ -25,7 +26,8 @@ public class StrenghSticks {
         ItemMeta itemMeta = stack.getItemMeta();
         itemMeta.setDisplayName("§cMain Damage USB (Distant)");
         ArrayList<String> lore = new ArrayList<>();
-        lore.add("§fIncrease damage by +7.5% Damage to far-off targets");
+        lore.add("§fIncreases damage dealt with your main weapon to far-off targets");
+        lore.add("§f+12.5%");
         itemMeta.setLore(lore);
         stack.setItemMeta(itemMeta);
         player.getInventory().addItem(stack);
@@ -36,7 +38,8 @@ public class StrenghSticks {
         ItemMeta itemMeta = stack.getItemMeta();
         itemMeta.setDisplayName("§cExplosion Damage USB");
         ArrayList<String> lore = new ArrayList<>();
-        lore.add("§fIncrease damage by +7.5% Damage from explosions");
+        lore.add("§fIncreases damage dealt by explosives");
+        lore.add("§f+15%");
         itemMeta.setLore(lore);
         stack.setItemMeta(itemMeta);
         player.getInventory().addItem(stack);
@@ -47,7 +50,8 @@ public class StrenghSticks {
         ItemMeta itemMeta = stack.getItemMeta();
         itemMeta.setDisplayName("§cAttack Speed USB");
         ArrayList<String> lore = new ArrayList<>();
-        lore.add("§fIncrease attack speed by +7.5%");
+        lore.add("§fIncreases your attack speed");
+        lore.add("§f+10%");
         itemMeta.setLore(lore);
         stack.setItemMeta(itemMeta);
         player.getInventory().addItem(stack);
@@ -58,7 +62,8 @@ public class StrenghSticks {
         ItemMeta itemMeta = stack.getItemMeta();
         itemMeta.setDisplayName("§cDamage USB");
         ArrayList<String> lore = new ArrayList<>();
-        lore.add("§fIncrease damage from everything by +5%");
+        lore.add("§fIncreases damage from everything");
+        lore.add("§f+7.5%");
         itemMeta.setLore(lore);
         stack.setItemMeta(itemMeta);
         player.getInventory().addItem(stack);
