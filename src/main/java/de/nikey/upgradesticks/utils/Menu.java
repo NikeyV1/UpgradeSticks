@@ -11,6 +11,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockPlaceEvent;
 import org.bukkit.event.inventory.InventoryClickEvent;
+import org.bukkit.event.inventory.InventoryCloseEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.inventory.Inventory;
@@ -288,6 +289,17 @@ public class Menu implements Listener {
                     }
                 }
             }
+        }
+    }
+
+    @EventHandler
+    public void onInventoryClose(InventoryCloseEvent event) {
+        if (event.getView().getTitle().equalsIgnoreCase("USB Menu 2")) {
+            Inventory inventory = event.getInventory();
+            invMenu2.put((Player) event.getPlayer(),inventory);
+        } else if (event.getView().getTitle().equalsIgnoreCase("USB Menu")) {
+            Inventory inventory = event.getInventory();
+            invMenu.put((Player) event.getPlayer(),inventory);
         }
     }
 

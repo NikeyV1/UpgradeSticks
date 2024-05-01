@@ -1,10 +1,7 @@
 package de.nikey.upgradesticks;
 
 import de.nikey.upgradesticks.listener.*;
-import de.nikey.upgradesticks.usbsticks.DefenseStick;
-import de.nikey.upgradesticks.usbsticks.MovementStick;
-import de.nikey.upgradesticks.usbsticks.StrengthStick;
-import de.nikey.upgradesticks.usbsticks.UtilityStick;
+import de.nikey.upgradesticks.usbsticks.*;
 import de.nikey.upgradesticks.utils.Menu;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.PluginManager;
@@ -31,6 +28,7 @@ public final class UpgradeSticks extends JavaPlugin {
         pm.registerEvents(new UtilityUSB(),this);
         pm.registerEvents(new UtilityStick(),this);
         pm.registerEvents(new SupportUSB(),this);
+        pm.registerEvents(new SupportStick(),this);
 
 
     }

@@ -44,9 +44,12 @@ public class UtilityStick implements Listener {
 
             if (event.getEntity() instanceof Player) {
                 if (attacker.getInventory().getItemInMainHand().getType() == Material.NETHERITE_AXE || attacker.getInventory().getItemInMainHand().getType() == Material.DIAMOND_AXE || attacker.getInventory().getItemInMainHand().getType() == Material.IRON_AXE) {
-                    int amount = UtilityUSBs.getAmountAxeDurability(attacker);
-                    double i = 2.5* amount;
-                    int round = (int) Math.round(i);
+                    double amount = UtilityUSBs.getAmountAxeDurability(attacker);
+                    amount = amount*2.5;
+                    amount = amount/100;
+
+                    amount = 1/amount;
+                    int round = (int) Math.round(amount);
                     Random random = new Random();
                     if (random.nextInt(round) == 0) {
                         damageRandomArmorPiece((Player) event.getEntity());
