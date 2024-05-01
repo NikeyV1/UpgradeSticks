@@ -56,11 +56,13 @@ public class SupportUSB implements Listener {
 
     @EventHandler
     public void onEntityDeath(EntityDeathEvent event) {
-        if (event.getEntity().getKiller().getHealth() <= 15) {
-            Random random = new Random();
-            if (random.nextInt(500) == 100) {
-                event.getEntity().getKiller().playSound(Sound.sound(Key.key("entity.experience_orb.pickup"), Sound.Source.AMBIENT,1,1));
-                SupportSticks.LifeRecoveryStick(event.getEntity().getKiller());
+        if (event.getEntity().getKiller() != null) {
+            if (event.getEntity().getKiller().getHealth() <= 15) {
+                Random random = new Random();
+                if (random.nextInt(500) == 100) {
+                    event.getEntity().getKiller().playSound(Sound.sound(Key.key("entity.experience_orb.pickup"), Sound.Source.AMBIENT,1,1));
+                    SupportSticks.LifeRecoveryStick(event.getEntity().getKiller());
+                }
             }
         }
     }

@@ -12,7 +12,7 @@ public class DefenseSticks {
     public static void ArmorStick(Player player) {
         ItemStack stack = new ItemStack(Material.PAPER);
         ItemMeta itemMeta = stack.getItemMeta();
-        itemMeta.setDisplayName("§dArmor USB");
+        itemMeta.setDisplayName("§7Armor USB");
         ArrayList<String> lore = new ArrayList<>();
         lore.add("§fIncrease Armor by 0.3");
         itemMeta.setLore(lore);
@@ -23,7 +23,7 @@ public class DefenseSticks {
     public static void ArmorToughnessStick(Player player) {
         ItemStack stack = new ItemStack(Material.PAPER);
         ItemMeta itemMeta = stack.getItemMeta();
-        itemMeta.setDisplayName("§dArmor Toughness USB");
+        itemMeta.setDisplayName("§7Armor Toughness USB");
         ArrayList<String> lore = new ArrayList<>();
         lore.add("§fIncrease Armor by 0.3");
         itemMeta.setLore(lore);
@@ -34,7 +34,7 @@ public class DefenseSticks {
     public static void KnockbackResistanceStick(Player player) {
         ItemStack stack = new ItemStack(Material.PAPER);
         ItemMeta itemMeta = stack.getItemMeta();
-        itemMeta.setDisplayName("§dKnockback Resistance USB");
+        itemMeta.setDisplayName("§7Knockback Resistance USB");
         ArrayList<String> lore = new ArrayList<>();
         lore.add("§fIncrease Knockback Resistance by 0.3");
         itemMeta.setLore(lore);
@@ -45,7 +45,7 @@ public class DefenseSticks {
     public static void DamageResistanceStick(Player player) {
         ItemStack stack = new ItemStack(Material.PAPER);
         ItemMeta itemMeta = stack.getItemMeta();
-        itemMeta.setDisplayName("§dDamage Resistance USB");
+        itemMeta.setDisplayName("§7Damage Resistance USB");
         ArrayList<String> lore = new ArrayList<>();
         lore.add("§fIncrease chance for attacks not dealing damage by 2.5%");
         itemMeta.setLore(lore);
@@ -56,7 +56,7 @@ public class DefenseSticks {
     public static void ThornsStick(Player player) {
         ItemStack stack = new ItemStack(Material.PAPER);
         ItemMeta itemMeta = stack.getItemMeta();
-        itemMeta.setDisplayName("§dThorns USB");
+        itemMeta.setDisplayName("§7Thorns USB");
         ArrayList<String> lore = new ArrayList<>();
         lore.add("§fIncrease chance for thorns by 5%");
         itemMeta.setLore(lore);

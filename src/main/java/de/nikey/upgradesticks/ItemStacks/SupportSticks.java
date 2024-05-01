@@ -16,7 +16,7 @@ public class SupportSticks implements Listener {
     public static void HeartRegenerationStick(Player player) {
         ItemStack stack = new ItemStack(Material.PAPER);
         ItemMeta itemMeta = stack.getItemMeta();
-        itemMeta.setDisplayName("§7Heart Regeneration USB");
+        itemMeta.setDisplayName("§dHeart Regeneration USB");
         ArrayList<String> lore = new ArrayList<>();
         lore.add("§fIncrease Heart regeneration");
         lore.add("§f+20%");
@@ -28,7 +28,7 @@ public class SupportSticks implements Listener {
     public static void ArrowSaverStick(Player player) {
         ItemStack stack = new ItemStack(Material.PAPER);
         ItemMeta itemMeta = stack.getItemMeta();
-        itemMeta.setDisplayName("§7Arrow Saver USB");
+        itemMeta.setDisplayName("§dArrow Saver USB");
         ArrayList<String> lore = new ArrayList<>();
         lore.add("§fDecreases amount of arrows used");
         lore.add("§f-15%");
@@ -40,7 +40,7 @@ public class SupportSticks implements Listener {
     public static void DurabilitySaverStick(Player player) {
         ItemStack stack = new ItemStack(Material.PAPER);
         ItemMeta itemMeta = stack.getItemMeta();
-        itemMeta.setDisplayName("§7Durability Saver USB");
+        itemMeta.setDisplayName("§dDurability Saver USB");
         ArrayList<String> lore = new ArrayList<>();
         lore.add("§fDecreases amount of durability used");
         lore.add("§f-20%");
@@ -52,7 +52,7 @@ public class SupportSticks implements Listener {
     public static void LifeRecoveryStick(Player player) {
         ItemStack stack = new ItemStack(Material.PAPER);
         ItemMeta itemMeta = stack.getItemMeta();
-        itemMeta.setDisplayName("§7Life Recovery USB");
+        itemMeta.setDisplayName("§dLife Recovery USB");
         ArrayList<String> lore = new ArrayList<>();
         lore.add("§fRegenerate hearts by defeating mobs");
         lore.add("§f+4%");
@@ -64,7 +64,7 @@ public class SupportSticks implements Listener {
     public static void HomingArrowsStick(Player player) {
         ItemStack stack = new ItemStack(Material.PAPER);
         ItemMeta itemMeta = stack.getItemMeta();
-        itemMeta.setDisplayName("§7Homing Arrows USB");
+        itemMeta.setDisplayName("§dHoming Arrows USB");
         ArrayList<String> lore = new ArrayList<>();
         lore.add("§fCauses arrows to track targets");
         lore.add("§f+12%");
@@ -76,7 +76,7 @@ public class SupportSticks implements Listener {
     public static void ItemCooldownStick(Player player) {
         ItemStack stack = new ItemStack(Material.PAPER);
         ItemMeta itemMeta = stack.getItemMeta();
-        itemMeta.setDisplayName("§7Item Cooldown USB");
+        itemMeta.setDisplayName("§dItem Cooldown USB");
         ArrayList<String> lore = new ArrayList<>();
         lore.add("§fDecreases item cooldown time");
         lore.add("§f-15%");
@@ -88,7 +88,7 @@ public class SupportSticks implements Listener {
     public static void PotionDurationStick(Player player) {
         ItemStack stack = new ItemStack(Material.PAPER);
         ItemMeta itemMeta = stack.getItemMeta();
-        itemMeta.setDisplayName("§7Potion Duration USB");
+        itemMeta.setDisplayName("§dPotion Duration USB");
         ArrayList<String> lore = new ArrayList<>();
         lore.add("§fIncreases potion duration");
         lore.add("§f+15%");

@@ -33,7 +33,7 @@ public class USBMenu implements Listener {
         Player player = event.getPlayer();
         if (event.getBlockPlaced().getType() == Material.CHEST) {
             event.setCancelled(true);
-            openMenu(player);
+            //openMenu(player);
         }
     }
 
@@ -184,16 +184,16 @@ public class USBMenu implements Listener {
         savePlayerBackpack(player);
     }
 
-    public static void openMenu(Player player) {
-        Inventory inv = Bukkit.createInventory(null, 27, "USB Menu");
-        List<ItemStack> contents = getPlayerBackpackContents(player);
-        if (contents != null) {
-            inv.setContents(contents.toArray(new ItemStack[0]));
-        }
-        MenuInventory.USBMenu(inv);
-        playerInv.put(player,inv);
-        player.openInventory(inv);
-    }
+    //public static void openMenu(Player player) {
+    //        Inventory inv = Bukkit.createInventory(null, 27, "USB Menu");
+    //        List<ItemStack> contents = getPlayerBackpackContents(player);
+    //        if (contents != null) {
+    //            inv.setContents(contents.toArray(new ItemStack[0]));
+    //        }
+    //        MenuInventory.USBMenu(inv);
+    //        playerInv.put(player, inv);
+    //        player.openInventory(inv);
+    //    }
 
     private static List<ItemStack> getPlayerBackpackContents(Player player) {
         return playerMenus.getOrDefault(player.getUniqueId(), null);

@@ -29,7 +29,7 @@ public class MenuInventory {
 
         ItemStack a = new ItemStack(Material.MAGENTA_GLAZED_TERRACOTTA);
         ItemMeta m = a.getItemMeta();
-        m.setDisplayName("Next Page");
+        m.setDisplayName("Second Page");
         a.setItemMeta(m);
         //Invsetup
         // Loop through the inventory slots
@@ -71,7 +71,7 @@ public class MenuInventory {
         }
     }
     public static void secondPage(Inventory inv){
-        ItemStack BlueGlass = new ItemStack(Material.LIGHT_BLUE_STAINED_GLASS_PANE);
+        ItemStack BlueGlass = new ItemStack(Material.BLUE_STAINED_GLASS_PANE);
         ItemMeta blueMeta = BlueGlass.getItemMeta();
         blueMeta.setDisplayName("§c");
         BlueGlass.setItemMeta(blueMeta);
@@ -85,6 +85,11 @@ public class MenuInventory {
         ItemMeta grayMeta = GrayGlass.getItemMeta();
         grayMeta.setDisplayName("§c");
         GrayGlass.setItemMeta(grayMeta);
+
+        ItemStack CyanGlass = new ItemStack(Material.CYAN_STAINED_GLASS_PANE);
+        ItemMeta cyanMeta = CyanGlass.getItemMeta();
+        cyanMeta.setDisplayName("§c");
+        CyanGlass.setItemMeta(cyanMeta);
 
         ItemStack a = new ItemStack(Material.MAGENTA_GLAZED_TERRACOTTA);
         ItemMeta m = a.getItemMeta();
@@ -113,6 +118,12 @@ public class MenuInventory {
                     case 13:
                     case 14:
                         inv.setItem(i, GrayGlass);
+                        break;
+                    case 6:
+                    case 7:
+                    case 15:
+                    case 16:
+                        inv.setItem(i, CyanGlass);
                         break;
                     case 8:
                     case 17:

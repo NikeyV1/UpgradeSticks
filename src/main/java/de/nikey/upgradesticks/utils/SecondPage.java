@@ -31,7 +31,7 @@ public class SecondPage implements Listener {
                 event.setCancelled(true);
                 //Menü
                 if (event.getCurrentItem() != null && event.getCurrentItem().getType() == Material.MAGENTA_GLAZED_TERRACOTTA) {
-                    USBMenu.openMenu((Player) event.getWhoClicked());
+                    //USBMenu.openMenu((Player) event.getWhoClicked());
                 }
                 if (clickedInventory == playerInv.get(event.getWhoClicked())) {
                     if (event.getCurrentItem() != null && event.getCurrentItem().getType() == Material.PAPER) {
