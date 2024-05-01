@@ -18,7 +18,8 @@ public class MovementStick implements Listener {
 
         amount =  amount*10;
         amount = amount/100 +1;
-        player.setWalkSpeed((float) (0.1*amount));
+        amount = 0.2*amount;
+        player.setWalkSpeed((float) (amount));
     }
     @EventHandler
     void onMove(PlayerMoveEvent e) {

@@ -26,7 +26,8 @@ public class UtilitySticks {
         ItemMeta itemMeta = stack.getItemMeta();
         itemMeta.setDisplayName("§aLuck USB");
         ArrayList<String> lore = new ArrayList<>();
-        lore.add("§fIncrease luck level by 1");
+        lore.add("§fIncrease luck level");
+        lore.add("§f+1");
         itemMeta.setLore(lore);
         stack.setItemMeta(itemMeta);
         player.getInventory().addItem(stack);
@@ -37,7 +38,8 @@ public class UtilitySticks {
         ItemMeta itemMeta = stack.getItemMeta();
         itemMeta.setDisplayName("§aAxe Armor Damage USB");
         ArrayList<String> lore = new ArrayList<>();
-        lore.add("§fIncrease chance for an axe damaging armor by 2.5%");
+        lore.add("§fIncrease chance for an axe damaging armor");
+        lore.add("§f+2.5%");
         itemMeta.setLore(lore);
         stack.setItemMeta(itemMeta);
         player.getInventory().addItem(stack);
@@ -48,7 +50,8 @@ public class UtilitySticks {
         ItemMeta itemMeta = stack.getItemMeta();
         itemMeta.setDisplayName("§aShield Break USB");
         ArrayList<String> lore = new ArrayList<>();
-        lore.add("§fIncrease chance to damage players breaking your shield by 5%");
+        lore.add("§fIncrease chance to damage players breaking your shield");
+        lore.add("§f+5%");
         itemMeta.setLore(lore);
         stack.setItemMeta(itemMeta);
         player.getInventory().addItem(stack);
