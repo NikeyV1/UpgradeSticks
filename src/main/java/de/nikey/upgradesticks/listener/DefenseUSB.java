@@ -46,7 +46,7 @@ public class DefenseUSB implements Listener {
                 public void run() {
                     if (player.hasPotionEffect(PotionEffectType.DAMAGE_RESISTANCE)) {
                         Random random = new Random();
-                        if (random.nextInt(1400) ==987) {
+                        if (random.nextInt(3000) ==987) {
                             player.playSound(Sound.sound(Key.key("entity.guardian.ambient"), Sound.Source.AMBIENT,1,1));
                             DefenseSticks.DamageResistanceStick(player);
                         }

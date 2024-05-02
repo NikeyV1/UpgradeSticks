@@ -47,7 +47,7 @@ public class MovementStick implements Listener {
             a = 1/a;
             int r = random.nextInt((int) a);
             if (r == 4) {
-                player.giveExp(1);
+                player.giveExp(1,true);
             }
         }
     }

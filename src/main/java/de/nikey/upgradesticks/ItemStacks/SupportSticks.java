@@ -31,7 +31,7 @@ public class SupportSticks implements Listener {
         itemMeta.setDisplayName("§dArrow Saver USB");
         ArrayList<String> lore = new ArrayList<>();
         lore.add("§fDecreases amount of arrows used");
-        lore.add("§f-12.5%");
+        lore.add("§f-7.5%");
         itemMeta.setLore(lore);
         stack.setItemMeta(itemMeta);
         player.getInventory().addItem(stack);
@@ -67,7 +67,7 @@ public class SupportSticks implements Listener {
         itemMeta.setDisplayName("§dHoming Arrows USB");
         ArrayList<String> lore = new ArrayList<>();
         lore.add("§fCauses arrows to track targets");
-        lore.add("§f+12%");
+        lore.add("§f+10%");
         itemMeta.setLore(lore);
         stack.setItemMeta(itemMeta);
         player.getInventory().addItem(stack);

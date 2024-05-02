@@ -14,7 +14,7 @@ public class SupportUSBs {
         if (inventory != null) {
             for (ItemStack item : inventory.getContents()) {
                 if (item != null && item.getType() == Material.PAPER && item.hasItemMeta()) {
-                    if (item.getItemMeta().getDisplayName().equalsIgnoreCase("§7Heart Regeneration USB")){
+                    if (item.getItemMeta().getDisplayName().equalsIgnoreCase("§dHeart Regeneration USB")){
                         amount += 1;
                     }
                 }
@@ -31,7 +31,7 @@ public class SupportUSBs {
         if (inventory != null) {
             for (ItemStack item : inventory.getContents()) {
                 if (item != null && item.getType() == Material.PAPER && item.hasItemMeta()) {
-                    if (item.getItemMeta().getDisplayName().equalsIgnoreCase("§7Arrow Saver USB")){
+                    if (item.getItemMeta().getDisplayName().equalsIgnoreCase("§dArrow Saver USB")){
                         amount += 1;
                     }
                 }
@@ -48,7 +48,7 @@ public class SupportUSBs {
         if (inventory != null) {
             for (ItemStack item : inventory.getContents()) {
                 if (item != null && item.getType() == Material.PAPER && item.hasItemMeta()) {
-                    if (item.getItemMeta().getDisplayName().equalsIgnoreCase("§7Durability Saver USB")){
+                    if (item.getItemMeta().getDisplayName().equalsIgnoreCase("§dDurability Saver USB")){
                         amount += 1;
                     }
                 }
@@ -65,7 +65,7 @@ public class SupportUSBs {
         if (inventory != null) {
             for (ItemStack item : inventory.getContents()) {
                 if (item != null && item.getType() == Material.PAPER && item.hasItemMeta()) {
-                    if (item.getItemMeta().getDisplayName().equalsIgnoreCase("§7Life Recovery USB")){
+                    if (item.getItemMeta().getDisplayName().equalsIgnoreCase("§dLife Recovery USB")){
                         amount += 1;
                     }
                 }
@@ -81,7 +81,7 @@ public class SupportUSBs {
         if (inventory != null) {
             for (ItemStack item : inventory.getContents()) {
                 if (item != null && item.getType() == Material.PAPER && item.hasItemMeta()) {
-                    if (item.getItemMeta().getDisplayName().equalsIgnoreCase("§7Homing Arrows USB")){
+                    if (item.getItemMeta().getDisplayName().equalsIgnoreCase("§dHoming Arrows USB")){
                         amount += 1;
                     }
                 }
@@ -97,7 +97,7 @@ public class SupportUSBs {
         if (inventory != null) {
             for (ItemStack item : inventory.getContents()) {
                 if (item != null && item.getType() == Material.PAPER && item.hasItemMeta()) {
-                    if (item.getItemMeta().getDisplayName().equalsIgnoreCase("§7Item Cooldown USB")){
+                    if (item.getItemMeta().getDisplayName().equalsIgnoreCase("§dItem Cooldown USB")){
                         amount += 1;
                     }
                 }
@@ -113,7 +113,7 @@ public class SupportUSBs {
         if (inventory != null) {
             for (ItemStack item : inventory.getContents()) {
                 if (item != null && item.getType() == Material.PAPER && item.hasItemMeta()) {
-                    if (item.getItemMeta().getDisplayName().equalsIgnoreCase("§7Potion Duration USB")){
+                    if (item.getItemMeta().getDisplayName().equalsIgnoreCase("§dPotion Duration USB")){
                         amount += 1;
                     }
                 }

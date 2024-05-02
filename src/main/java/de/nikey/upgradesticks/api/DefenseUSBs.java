@@ -15,7 +15,7 @@ public class DefenseUSBs {
         if (inventory != null) {
             for (ItemStack item : inventory.getContents()) {
                 if (item != null && item.getType() == Material.PAPER && item.hasItemMeta()) {
-                    if (item.getItemMeta().getDisplayName().equalsIgnoreCase("§dArmor USB")){
+                    if (item.getItemMeta().getDisplayName().equalsIgnoreCase("§7Armor USB")){
                         amount += 1;
                     }
                 }
@@ -31,7 +31,7 @@ public class DefenseUSBs {
         if (inventory != null) {
             for (ItemStack item : inventory.getContents()) {
                 if (item != null && item.getType() == Material.PAPER && item.hasItemMeta()) {
-                    if (item.getItemMeta().getDisplayName().equalsIgnoreCase("§dArmor Toughness USB")){
+                    if (item.getItemMeta().getDisplayName().equalsIgnoreCase("§7Armor Toughness USB")){
                         amount += 1;
                     }
                 }
@@ -47,7 +47,7 @@ public class DefenseUSBs {
         if (inventory != null) {
             for (ItemStack item : inventory.getContents()) {
                 if (item != null && item.getType() == Material.PAPER && item.hasItemMeta()) {
-                    if (item.getItemMeta().getDisplayName().equalsIgnoreCase("§dKnockback Resistance USB")){
+                    if (item.getItemMeta().getDisplayName().equalsIgnoreCase("§7Knockback Resistance USB")){
                         amount += 1;
                     }
                 }
@@ -63,7 +63,7 @@ public class DefenseUSBs {
         if (inventory != null) {
             for (ItemStack item : inventory.getContents()) {
                 if (item != null && item.getType() == Material.PAPER && item.hasItemMeta()) {
-                    if (item.getItemMeta().getDisplayName().equalsIgnoreCase("§dDamage Resistance USB")){
+                    if (item.getItemMeta().getDisplayName().equalsIgnoreCase("§7Damage Resistance USB")){
                         amount += 1;
                     }
                 }
@@ -79,7 +79,7 @@ public class DefenseUSBs {
         if (inventory != null) {
             for (ItemStack item : inventory.getContents()) {
                 if (item != null && item.getType() == Material.PAPER && item.hasItemMeta()) {
-                    if (item.getItemMeta().getDisplayName().equalsIgnoreCase("§dThorns USB")){
+                    if (item.getItemMeta().getDisplayName().equalsIgnoreCase("§7Thorns USB")){
                         amount += 1;
                     }
                 }

@@ -41,6 +41,8 @@ public class Menu implements Listener {
     public void onPlayerJoin(PlayerJoinEvent event) {
         Player player = event.getPlayer();
 
+        loadPlayerMenus(player);
+
         Inventory inv = Bukkit.createInventory(null,36,"USB Menu");
         if (menuContents.get(player) != null) {
             inv.setContents(menuContents.get(player));
@@ -54,7 +56,6 @@ public class Menu implements Listener {
         }
         MenuInventory.secondPage(inventory);
         invMenu2.put(player,inventory);
-
     }
 
     public static void openMenu(Player player) {
@@ -360,6 +361,39 @@ public class Menu implements Listener {
                     ItemStack[] stacks = menu.toArray(new ItemStack[0]);
                     menuContents2.put(player,stacks);
                 }
+            }
+        }
+    }
+
+
+    public static void loadPlayerMenus(Player player) {
+        FileConfiguration config = UpgradeSticks.getPlugin().getConfig();
+        ConfigurationSection playerData = config.getConfigurationSection("menu1."+ player.getName());
+        List<?> contents = playerData.getList(player.getName());
+        if (contents != null) {
+            List<ItemStack> menu = new ArrayList<>();
+            for (Object item : contents) {
+                if (item instanceof ItemStack) {
+                    menu.add((ItemStack) item);
+                }
+            }
+
+            ItemStack[] stacks = menu.toArray(new ItemStack[0]);
+            menuContents.put(player,stacks);
+        }
+        ConfigurationSection pd = config.getConfigurationSection("menu2."+player.getName());
+        if (pd != null) {
+            List<?> c = pd.getList(player.getName());
+            if (c != null) {
+                List<ItemStack> menu = new ArrayList<>();
+                for (Object item : c) {
+                    if (item instanceof ItemStack) {
+                        menu.add((ItemStack) item);
+                    }
+                }
+
+                ItemStack[] stacks = menu.toArray(new ItemStack[0]);
+                menuContents2.put(player,stacks);
             }
         }
     }

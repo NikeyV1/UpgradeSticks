@@ -14,7 +14,8 @@ public class DefenseSticks {
         ItemMeta itemMeta = stack.getItemMeta();
         itemMeta.setDisplayName("§7Armor USB");
         ArrayList<String> lore = new ArrayList<>();
-        lore.add("§fIncrease Armor by 0.3");
+        lore.add("§fIncrease Armor");
+        lore.add("§f+0.75");
         itemMeta.setLore(lore);
         stack.setItemMeta(itemMeta);
         player.getInventory().addItem(stack);
@@ -25,7 +26,8 @@ public class DefenseSticks {
         ItemMeta itemMeta = stack.getItemMeta();
         itemMeta.setDisplayName("§7Armor Toughness USB");
         ArrayList<String> lore = new ArrayList<>();
-        lore.add("§fIncrease Armor by 0.3");
+        lore.add("§fIncrease Armor Toughness");
+        lore.add("§f+0.75");
         itemMeta.setLore(lore);
         stack.setItemMeta(itemMeta);
         player.getInventory().addItem(stack);
@@ -36,7 +38,8 @@ public class DefenseSticks {
         ItemMeta itemMeta = stack.getItemMeta();
         itemMeta.setDisplayName("§7Knockback Resistance USB");
         ArrayList<String> lore = new ArrayList<>();
-        lore.add("§fIncrease Knockback Resistance by 0.3");
+        lore.add("§fIncrease Knockback Resistance");
+        lore.add("§f+0.3");
         itemMeta.setLore(lore);
         stack.setItemMeta(itemMeta);
         player.getInventory().addItem(stack);
@@ -47,7 +50,8 @@ public class DefenseSticks {
         ItemMeta itemMeta = stack.getItemMeta();
         itemMeta.setDisplayName("§7Damage Resistance USB");
         ArrayList<String> lore = new ArrayList<>();
-        lore.add("§fIncrease chance for attacks not dealing damage by 2.5%");
+        lore.add("§fIncrease chance for attacks not dealing damage");
+        lore.add("§f+2.5%");
         itemMeta.setLore(lore);
         stack.setItemMeta(itemMeta);
         player.getInventory().addItem(stack);
@@ -58,7 +62,8 @@ public class DefenseSticks {
         ItemMeta itemMeta = stack.getItemMeta();
         itemMeta.setDisplayName("§7Thorns USB");
         ArrayList<String> lore = new ArrayList<>();
-        lore.add("§fIncrease chance for thorns by 5%");
+        lore.add("§fIncrease chance for thorns");
+        lore.add("§f+5%");
         itemMeta.setLore(lore);
         stack.setItemMeta(itemMeta);
         player.getInventory().addItem(stack);
