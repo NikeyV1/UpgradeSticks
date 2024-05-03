@@ -11,7 +11,6 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockPlaceEvent;
 import org.bukkit.event.inventory.InventoryClickEvent;
-import org.bukkit.event.inventory.InventoryCloseEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.inventory.Inventory;
@@ -37,26 +36,25 @@ public class Menu implements Listener {
         }
     }
 
-    @EventHandler
-    public void onPlayerJoin(PlayerJoinEvent event) {
-        Player player = event.getPlayer();
-
-        loadPlayerMenus(player);
-
-        Inventory inv = Bukkit.createInventory(null,36,"USB Menu");
-        if (menuContents.get(player) != null) {
-            inv.setContents(menuContents.get(player));
-        }
-        MenuInventory.USBMenu(inv);
-        invMenu.put(player,inv);
-
-        Inventory inventory = Bukkit.createInventory(null,36,"USB Menu 2");
-        if (menuContents2.get(player) != null) {
-            inventory.setContents(menuContents2.get(player));
-        }
-        MenuInventory.secondPage(inventory);
-        invMenu2.put(player,inventory);
-    }
+    //@EventHandler
+    //    public void onPlayerJoin(PlayerJoinEvent event) {
+    //        Player player = event.getPlayer();
+    //
+    //
+    //        Inventory inv = Bukkit.createInventory(null,36,"USB Menu");
+    //        if (menuContents.get(player) != null) {
+    //            inv.setContents(menuContents.get(player));
+    //        }
+    //        MenuInventory.USBMenu(inv);
+    //        invMenu.put(player,inv);
+    //
+    //        Inventory inventory = Bukkit.createInventory(null,36,"USB Menu 2");
+    //        if (menuContents2.get(player) != null) {
+    //            inventory.setContents(menuContents2.get(player));
+    //        }
+    //        MenuInventory.secondPage(inventory);
+    //        invMenu2.put(player,inventory);
+    //    }
 
     public static void openMenu(Player player) {
         Inventory inv = Bukkit.createInventory(null,36,"USB Menu");
@@ -78,27 +76,11 @@ public class Menu implements Listener {
         player.openInventory(inv);
     }
 
-    @EventHandler
-    public void onPlayerQuit(PlayerQuitEvent event) {
-        Player player = event.getPlayer();
-        Inventory inv = Bukkit.createInventory(null,36,"USB Menu");
-        if (menuContents.get(player) != null) {
-            inv.setContents(menuContents.get(player));
-        }
-        MenuInventory.USBMenu(inv);
-        invMenu.put(player,inv);
-
-        Inventory inventory = Bukkit.createInventory(null,36,"USB Menu 2");
-        if (menuContents2.get(player) != null) {
-            inventory.setContents(menuContents2.get(player));
-        }
-        MenuInventory.secondPage(inventory);
-
-        invMenu2.put(player,inventory);
-
-        saveMenu1();
-        saveMenu2();
-    }
+    //@EventHandler
+    //    public void onPlayerQuit(PlayerQuitEvent event) {
+    //        saveMenu1();
+    //        saveMenu2();
+    //    }
 
     @EventHandler
     public void onInventoryClick(InventoryClickEvent event) {
@@ -353,38 +335,6 @@ public class Menu implements Listener {
                     ItemStack[] stacks = menu.toArray(new ItemStack[0]);
                     menuContents2.put(player,stacks);
                 }
-            }
-        }
-    }
-
-    public static void loadPlayerMenus(Player player) {
-        FileConfiguration config = UpgradeSticks.getPlugin().getConfig();
-        ConfigurationSection playerData = config.getConfigurationSection("menu1."+ player.getName());
-        List<?> contents = playerData.getList(player.getName());
-        if (contents != null) {
-            List<ItemStack> menu = new ArrayList<>();
-            for (Object item : contents) {
-                if (item instanceof ItemStack) {
-                    menu.add((ItemStack) item);
-                }
-            }
-
-            ItemStack[] stacks = menu.toArray(new ItemStack[0]);
-            menuContents.put(player,stacks);
-        }
-        ConfigurationSection pd = config.getConfigurationSection("menu2."+player.getName());
-        if (pd != null) {
-            List<?> c = pd.getList(player.getName());
-            if (c != null) {
-                List<ItemStack> menu = new ArrayList<>();
-                for (Object item : c) {
-                    if (item instanceof ItemStack) {
-                        menu.add((ItemStack) item);
-                    }
-                }
-
-                ItemStack[] stacks = menu.toArray(new ItemStack[0]);
-                menuContents2.put(player,stacks);
             }
         }
     }
