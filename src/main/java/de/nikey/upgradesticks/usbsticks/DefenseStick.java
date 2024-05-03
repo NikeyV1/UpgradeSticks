@@ -27,7 +27,6 @@ public class DefenseStick implements Listener {
             player.getAttribute(Attribute.GENERIC_ARMOR).setBaseValue(amountArmor);
 
             double amountArmorToughness = DefenseUSBs.getAmountArmorToughness(player);
-            amountArmorToughness = amountArmorToughness*0.75;
 
             player.getAttribute(Attribute.GENERIC_ARMOR_TOUGHNESS).setBaseValue(amountArmorToughness);
 

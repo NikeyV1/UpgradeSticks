@@ -67,7 +67,7 @@ public class SupportSticks implements Listener {
         itemMeta.setDisplayName("§dHoming Arrows USB");
         ArrayList<String> lore = new ArrayList<>();
         lore.add("§fCauses arrows to track targets");
-        lore.add("§f+10%");
+        lore.add("§f+7.5%");
         itemMeta.setLore(lore);
         stack.setItemMeta(itemMeta);
         player.getInventory().addItem(stack);

@@ -4,6 +4,7 @@ import de.nikey.upgradesticks.UpgradeSticks;
 import de.nikey.upgradesticks.api.DefenseUSBs;
 import de.nikey.upgradesticks.api.StrenghtUSBs;
 import de.nikey.upgradesticks.api.SupportUSBs;
+import io.papermc.paper.event.player.PlayerItemCooldownEvent;
 import net.kyori.adventure.key.Key;
 import net.kyori.adventure.sound.Sound;
 import org.bukkit.Particle;
@@ -13,11 +14,10 @@ import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
-import org.bukkit.event.entity.EntityDeathEvent;
-import org.bukkit.event.entity.EntityRegainHealthEvent;
-import org.bukkit.event.entity.EntityShootBowEvent;
-import org.bukkit.event.entity.ProjectileLaunchEvent;
+import org.bukkit.event.entity.*;
 import org.bukkit.event.player.PlayerItemDamageEvent;
+import org.bukkit.potion.PotionEffect;
+import org.bukkit.potion.PotionEffectType;
 import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.util.Vector;
 
@@ -37,6 +37,44 @@ public class SupportStick implements Listener {
         }
     }
 
+    @EventHandler
+    public void onPlayerItemCooldown(PlayerItemCooldownEvent event) {
+        Player player = event.getPlayer();
+        double amount = SupportUSBs.getAmountItemCooldown(player);
+
+        if (amount != 0 ) {
+            amount = amount * 15;
+            amount = amount / 100;
+
+            if (amount > 1) {
+                event.setCooldown(2);
+            } else {
+                amount = 1 / amount -1;
+                amount = amount*event.getCooldown();
+                int round = (int) Math.round(amount);
+                event.setCooldown(round);
+            }
+        }
+    }
+
+    @EventHandler
+    public void onEntityPotionEffect(EntityPotionEffectEvent event) {
+        if (event.getEntity() instanceof Player && event.getCause() != EntityPotionEffectEvent.Cause.PLUGIN && event.getCause() != EntityPotionEffectEvent.Cause.EXPIRATION) {
+            Player player = (Player) event.getEntity();
+            double amount = SupportUSBs.getAmountPotionDuration(player);
+            if (amount != 0) {
+                amount = amount*15;
+                amount = amount/100 +1;
+                PotionEffect newEffect = event.getNewEffect();
+
+                PotionEffect potionEffect = new PotionEffect(newEffect.getType(), (int) (newEffect.getDuration()*amount),newEffect.getAmplifier(),newEffect.isAmbient(),newEffect.hasParticles());
+
+                event.setOverride(false);
+                player.addPotionEffect(potionEffect);
+            }
+
+        }
+    }
 
     @EventHandler
     public void onProjectileLaunch(ProjectileLaunchEvent event) {
@@ -46,7 +84,7 @@ public class SupportStick implements Listener {
             Random random = new Random();
             double amount = SupportUSBs.getAmountHomingArrows(player);
             if (amount != 0 ) {
-                amount = amount*10;
+                amount = amount*7.5;
                 amount = amount/100;
 
                 amount = 1/amount;
@@ -59,7 +97,7 @@ public class SupportStick implements Listener {
                         public void run() {
                             aimArrow(arrow);
                         }
-                    }.runTaskLater(UpgradeSticks.getPlugin(), 3);
+                    }.runTaskTimer(UpgradeSticks.getPlugin(), 0,5);
                 }
             }
         }
@@ -67,12 +105,12 @@ public class SupportStick implements Listener {
 
     private void aimArrow(Arrow arrow) {
         if (!arrow.isOnGround() && !arrow.isDead()) {
-            for (Entity entity : arrow.getNearbyEntities(6, 6, 6)) {
+            for (Entity entity : arrow.getNearbyEntities(4, 4, 4)) {
                 if (entity instanceof LivingEntity && !(entity.equals(arrow.getShooter()))) {
                     LivingEntity target = (LivingEntity) entity;
-                    if (target.getLocation().distance(arrow.getLocation()) <= 10) { // Adjust the range as needed
+                    if (target.getLocation().distance(arrow.getLocation()) <= 6) {
                         Vector direction = target.getEyeLocation().toVector().subtract(arrow.getLocation().toVector()).normalize();
-                        arrow.setVelocity(direction.multiply(1.3));
+                        arrow.setVelocity(direction.multiply(1.2));
                         arrow.getWorld().spawnParticle(Particle.END_ROD,arrow.getLocation(),4);
                         break;
                     }

@@ -15,7 +15,7 @@ public class StrenghSticks {
         itemMeta.setDisplayName("§cMain Damage USB (Close)");
         ArrayList<String> lore = new ArrayList<>();
         lore.add("§fIncreases damage dealt with your main weapon to close targets");
-        lore.add("§f+12.5%");
+        lore.add("§f+10%");
         itemMeta.setLore(lore);
         stack.setItemMeta(itemMeta);
         player.getInventory().addItem(stack);
@@ -27,7 +27,7 @@ public class StrenghSticks {
         itemMeta.setDisplayName("§cMain Damage USB (Distant)");
         ArrayList<String> lore = new ArrayList<>();
         lore.add("§fIncreases damage dealt with your main weapon to far-off targets");
-        lore.add("§f+12.5%");
+        lore.add("§f+10%");
         itemMeta.setLore(lore);
         stack.setItemMeta(itemMeta);
         player.getInventory().addItem(stack);

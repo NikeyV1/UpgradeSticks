@@ -30,7 +30,7 @@ public class StrengthStick implements Listener {
                 if (event.getCause() == EntityDamageEvent.DamageCause.ENTITY_ATTACK || event.getCause() == EntityDamageEvent.DamageCause.ENTITY_SWEEP_ATTACK) {
                     double amount = StrenghtUSBs.getAmountDamageClose(player);
 
-                    amount =  amount*12.5;
+                    amount =  amount*10;
                     amount = amount/100 +1;
                     event.setDamage(event.getDamage() * amount);
                 }
@@ -38,7 +38,7 @@ public class StrengthStick implements Listener {
                 if (event.getCause() == EntityDamageEvent.DamageCause.ENTITY_ATTACK || event.getCause() == EntityDamageEvent.DamageCause.ENTITY_SWEEP_ATTACK || event.getCause() == EntityDamageEvent.DamageCause.PROJECTILE || event.getCause() == EntityDamageEvent.DamageCause.ENTITY_EXPLOSION) {
                     double amount = StrenghtUSBs.getAmountDamageFar(player);
 
-                    amount =  amount*12.5;
+                    amount =  amount*10;
                     amount = amount/100 +1;
                     event.setDamage(event.getDamage() * amount);
                 }

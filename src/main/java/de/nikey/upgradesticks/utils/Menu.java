@@ -95,6 +95,9 @@ public class Menu implements Listener {
         MenuInventory.secondPage(inventory);
 
         invMenu2.put(player,inventory);
+
+        saveMenu1();
+        saveMenu2();
     }
 
     @EventHandler
@@ -293,17 +296,6 @@ public class Menu implements Listener {
         }
     }
 
-    @EventHandler
-    public void onInventoryClose(InventoryCloseEvent event) {
-        if (event.getView().getTitle().equalsIgnoreCase("USB Menu 2")) {
-            Inventory inventory = event.getInventory();
-            invMenu2.put((Player) event.getPlayer(),inventory);
-        } else if (event.getView().getTitle().equalsIgnoreCase("USB Menu")) {
-            Inventory inventory = event.getInventory();
-            invMenu.put((Player) event.getPlayer(),inventory);
-        }
-    }
-
 
     public static void saveMenu1() {
         FileConfiguration config = UpgradeSticks.getPlugin().getConfig();
@@ -364,7 +356,6 @@ public class Menu implements Listener {
             }
         }
     }
-
 
     public static void loadPlayerMenus(Player player) {
         FileConfiguration config = UpgradeSticks.getPlugin().getConfig();

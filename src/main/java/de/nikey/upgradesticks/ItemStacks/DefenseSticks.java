@@ -27,7 +27,7 @@ public class DefenseSticks {
         itemMeta.setDisplayName("§7Armor Toughness USB");
         ArrayList<String> lore = new ArrayList<>();
         lore.add("§fIncrease Armor Toughness");
-        lore.add("§f+0.75");
+        lore.add("§f+1");
         itemMeta.setLore(lore);
         stack.setItemMeta(itemMeta);
         player.getInventory().addItem(stack);
