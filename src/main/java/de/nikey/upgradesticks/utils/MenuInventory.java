@@ -32,43 +32,61 @@ public class MenuInventory {
         m.setDisplayName("Second Page");
         a.setItemMeta(m);
         //Invsetup
-        // Loop through the inventory slots
+
         for (int i = 0; i < inv.getSize(); i++) {
-            // Check if the slot is empty
-            if (inv.getItem(i) == null || inv.getItem(i).getType() == Material.AIR) {
-                // Place the glass pane in the empty slot
-                switch (i % 9) { // Use modulo to determine column
+            if (inv.getItem(i) == null) {
+                // Setze das Item nur, wenn der Slot leer ist
+                switch(i) {
                     case 0:
-                    case 1:
                     case 9:
+                    case 18:
+                    case 1:
                     case 10:
+                    case 19:
+                    case 27:
+                    case 28:
                         inv.setItem(i, YellowGlass);
                         break;
                     case 2:
                     case 3:
                     case 11:
                     case 12:
+                    case 20:
+                    case 21:
+                    case 29:
+                    case 30:
                         inv.setItem(i, GreenGlass);
                         break;
                     case 4:
                     case 5:
                     case 13:
                     case 14:
+                    case 22:
+                    case 23:
+                    case 31:
+                    case 32:
                         inv.setItem(i, RedGlass);
                         break;
                     case 6:
                     case 7:
                     case 15:
                     case 16:
+                    case 24:
+                    case 25:
+                    case 33:
+                    case 34:
                         inv.setItem(i, PurpleGlass);
                         break;
                     case 8:
                     case 17:
+                    case 26:
+                    case 35:
                         inv.setItem(i, a);
                         break;
                 }
             }
         }
+
     }
     public static void secondPage(Inventory inv){
         ItemStack BlueGlass = new ItemStack(Material.BLUE_STAINED_GLASS_PANE);
@@ -97,36 +115,53 @@ public class MenuInventory {
         a.setItemMeta(m);
 
         for (int i = 0; i < inv.getSize(); i++) {
-            // Check if the slot is empty
-            if (inv.getItem(i) == null || inv.getItem(i).getType() == Material.AIR) {
-                // Place the glass pane in the empty slot
-                switch (i % 9) { // Use modulo to determine column
+            if (inv.getItem(i) == null) {
+                // Setze das Item nur, wenn der Slot leer ist
+                switch(i) {
                     case 0:
-                    case 1:
                     case 9:
+                    case 18:
+                    case 1:
                     case 10:
+                    case 19:
+                    case 27:
+                    case 28:
                         inv.setItem(i, BlueGlass);
                         break;
                     case 2:
                     case 3:
                     case 11:
                     case 12:
+                    case 20:
+                    case 21:
+                    case 29:
+                    case 30:
                         inv.setItem(i, Brownlass);
                         break;
                     case 4:
                     case 5:
                     case 13:
                     case 14:
+                    case 22:
+                    case 23:
+                    case 31:
+                    case 32:
                         inv.setItem(i, GrayGlass);
                         break;
                     case 6:
                     case 7:
                     case 15:
                     case 16:
+                    case 24:
+                    case 25:
+                    case 33:
+                    case 34:
                         inv.setItem(i, CyanGlass);
                         break;
                     case 8:
                     case 17:
+                    case 26:
+                    case 35:
                         inv.setItem(i, a);
                         break;
                 }

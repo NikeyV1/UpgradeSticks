@@ -8,10 +8,7 @@ import io.papermc.paper.event.player.PlayerItemCooldownEvent;
 import net.kyori.adventure.key.Key;
 import net.kyori.adventure.sound.Sound;
 import org.bukkit.Particle;
-import org.bukkit.entity.Arrow;
-import org.bukkit.entity.Entity;
-import org.bukkit.entity.LivingEntity;
-import org.bukkit.entity.Player;
+import org.bukkit.entity.*;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.*;
@@ -121,7 +118,7 @@ public class SupportStick implements Listener {
 
     @EventHandler
     public void onEntityShootBow(EntityShootBowEvent event) {
-        if (event.getEntity() instanceof Player) {
+        if (event.getEntity() instanceof Player ) {
             Player player = (Player) event.getEntity();
 
             double amount = SupportUSBs.getAmountArrowSaver(player);

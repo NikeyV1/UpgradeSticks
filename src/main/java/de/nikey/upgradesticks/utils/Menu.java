@@ -23,10 +23,8 @@ import java.util.List;
 @SuppressWarnings("ALL")
 public class Menu implements Listener {
 
-    public static HashMap<Player, ItemStack[]> menuContents = new HashMap<>();
-    public static HashMap<Player, Inventory> invMenu = new HashMap<>();
-    public static HashMap<Player, ItemStack[]> menuContents2 = new HashMap<>();
-    public static HashMap<Player, Inventory> invMenu2 = new HashMap<>();
+    public static HashMap<String, Inventory> invMenu = new HashMap<>();
+    public static HashMap<String, Inventory> invMenu2 = new HashMap<>();
 
     @EventHandler
     public void onBlockPlace(BlockPlaceEvent event) {
@@ -57,23 +55,26 @@ public class Menu implements Listener {
     //    }
 
     public static void openMenu(Player player) {
-        Inventory inv = Bukkit.createInventory(null,36,"USB Menu");
-        if (menuContents.get(player) != null) {
-            inv.setContents(menuContents.get(player));
+        Inventory inventory = Bukkit.createInventory(null,36,"USB Menu");
+        if (invMenu.get(player.getName()) != null && invMenu.get(player.getName()).getContents() != null) {
+            inventory.setContents(invMenu.get(player.getName()).getContents());
+        }else {
+            player.sendMessage("P");
+            MenuInventory.USBMenu(inventory);
         }
-        MenuInventory.USBMenu(inv);
-        invMenu.put(player,inv);
-        player.openInventory(inv);
+        invMenu.put(player.getName(),inventory);
+        player.openInventory(inventory);
     }
 
     public static void openSecondPage(Player player) {
-        Inventory inv = Bukkit.createInventory(null,36,"USB Menu 2");
-        if (menuContents2.get(player) != null) {
-            inv.setContents(menuContents2.get(player));
+        Inventory inventory = Bukkit.createInventory(null,36,"USB Menu 2");
+        if (invMenu2.get(player.getName()) != null &&invMenu2.get(player.getName()).getContents() != null) {
+            inventory.setContents(invMenu2.get(player.getName()).getContents());
+        }else {
+            MenuInventory.secondPage(inventory);
         }
-        MenuInventory.secondPage(inv);
-        invMenu2.put(player,inv);
-        player.openInventory(inv);
+        invMenu2.put(player.getName(),inventory);
+        player.openInventory(inventory);
     }
 
     //@EventHandler
@@ -90,14 +91,14 @@ public class Menu implements Listener {
             if (event.getView().getTitle().equalsIgnoreCase("USB Menu") || event.getView().getTitle().equalsIgnoreCase("USB Menu 2")) {
                 event.setCancelled(true);
                 //Menü
-                if (clickedInventory == invMenu.get(event.getWhoClicked())) {
+                if (clickedInventory == invMenu.get(event.getWhoClicked().getName())) {
                     if (event.getCurrentItem() != null && event.getCurrentItem().getType() == Material.MAGENTA_GLAZED_TERRACOTTA) {
                         openSecondPage((Player) event.getWhoClicked());
                     }
 
                     if (event.getCurrentItem() != null && event.getCurrentItem().getType() == Material.PAPER) {
                         if (item.getItemMeta().getDisplayName().contains("§c")) {
-                            Inventory inventory = invMenu.get(event.getWhoClicked());
+                            Inventory inventory = invMenu.get(event.getWhoClicked().getName());
                             inventory.setItem(event.getSlot(),new ItemStack(Material.RED_STAINED_GLASS_PANE));
                             if (item.getItemMeta().getDisplayName().equalsIgnoreCase("§cMain Damage USB (Close)")) {
                                 StrenghSticks.CloseDamageStick((Player) event.getWhoClicked());
@@ -111,11 +112,10 @@ public class Menu implements Listener {
                                 StrenghSticks.DamageStick((Player) event.getWhoClicked());
                             }
 
-                            invMenu.put((Player) event.getWhoClicked(),inventory);
-                            menuContents.put((Player) event.getWhoClicked(), inventory.getContents());
+                            invMenu.put(event.getWhoClicked().getName(),inventory);
 
                         }else if (item.getItemMeta().getDisplayName().contains("§e")) {
-                            Inventory inventory = invMenu.get(event.getWhoClicked());
+                            Inventory inventory = invMenu.get(event.getWhoClicked().getName());
                             inventory.setItem(event.getSlot(),new ItemStack(Material.YELLOW_STAINED_GLASS_PANE));
 
                             if (item.getItemMeta().getDisplayName().equalsIgnoreCase("§eWalk Speed USB")) {
@@ -128,11 +128,10 @@ public class Menu implements Listener {
                                 MobilitySticks.HungerMoveStick((Player) event.getWhoClicked());
                             }
 
-                            invMenu.put((Player) event.getWhoClicked(),inventory);
-                            menuContents.put((Player) event.getWhoClicked(), inventory.getContents());
+                            invMenu.put(event.getWhoClicked().getName(),inventory);
 
                         }else if (item.getItemMeta().getDisplayName().contains("§d")) {
-                            Inventory inventory = invMenu.get(event.getWhoClicked());
+                            Inventory inventory = invMenu.get(event.getWhoClicked().getName());
                             inventory.setItem(event.getSlot(),new ItemStack(Material.PURPLE_STAINED_GLASS_PANE));
                             if (item.getItemMeta().getDisplayName().equalsIgnoreCase("§dHeart Regeneration USB")) {
                                 SupportSticks.HeartRegenerationStick((Player) event.getWhoClicked());
@@ -149,12 +148,11 @@ public class Menu implements Listener {
                             }else if (item.getItemMeta().getDisplayName().equalsIgnoreCase("§dPotion Duration USB")) {
                                 SupportSticks.PotionDurationStick((Player) event.getWhoClicked());
                             }
-                            invMenu.put((Player) event.getWhoClicked(),inventory);
-                            menuContents.put((Player) event.getWhoClicked(), inventory.getContents());
+                            invMenu.put(event.getWhoClicked().getName(),inventory);
                         }
 
                         else if (item.getItemMeta().getDisplayName().contains("§a")) {
-                            Inventory inventory = invMenu.get(event.getWhoClicked());
+                            Inventory inventory = invMenu.get(event.getWhoClicked().getName());
                             inventory.setItem(event.getSlot(),new ItemStack(Material.LIME_STAINED_GLASS_PANE));
 
                             if (item.getItemMeta().getDisplayName().equalsIgnoreCase("§aLightning Riptide USB")) {
@@ -167,19 +165,18 @@ public class Menu implements Listener {
                                 UtilitySticks.ShieldBreakStick((Player) event.getWhoClicked());
                             }
 
-                            invMenu.put((Player) event.getWhoClicked(),inventory);
-                            menuContents.put((Player) event.getWhoClicked(), inventory.getContents());
+                            invMenu.put(event.getWhoClicked().getName(),inventory);
 
                         }
                     }
 
-                } else if (clickedInventory == invMenu2.get(event.getWhoClicked())) {
+                } else if (clickedInventory == invMenu2.get(event.getWhoClicked().getName())) {
                     if (event.getCurrentItem() != null && event.getCurrentItem().getType() == Material.MAGENTA_GLAZED_TERRACOTTA) {
                         openMenu((Player) event.getWhoClicked());
                     }
 
                     if (item.getItemMeta().getDisplayName().contains("§7")) {
-                        Inventory inventory = invMenu2.get(event.getWhoClicked());
+                        Inventory inventory = invMenu2.get(event.getWhoClicked().getName());
                         inventory.setItem(event.getSlot(),new ItemStack(Material.GRAY_STAINED_GLASS_PANE));
 
                         if (item.getItemMeta().getDisplayName().equalsIgnoreCase("§7Armor USB")) {
@@ -194,8 +191,7 @@ public class Menu implements Listener {
                             DefenseSticks.ThornsStick((Player) event.getWhoClicked());
                         }
 
-                        invMenu2.put((Player) event.getWhoClicked(),inventory);
-                        menuContents2.put((Player) event.getWhoClicked(), inventory.getContents());
+                        invMenu2.put(event.getWhoClicked().getName(),inventory);
 
                     }
 
@@ -212,10 +208,9 @@ public class Menu implements Listener {
                                     ItemStack stack = new ItemStack(Material.PAPER);
                                     stack.setItemMeta(currentItem.getItemMeta());
                                     stack.setAmount(1);
-                                    Inventory inv = invMenu.get(event.getWhoClicked());
+                                    Inventory inv = invMenu.get(event.getWhoClicked().getName());
                                     inv.setItem(first,stack);
-                                    invMenu.replace((Player) event.getWhoClicked(),inv);
-                                    menuContents.put((Player) event.getWhoClicked(), inventory.getContents());
+                                    invMenu.replace(event.getWhoClicked().getName(),inv);
                                 }
                             }else if (currentItem.getItemMeta().getDisplayName().contains("§e")) {
                                 int first = inventory.first(Material.YELLOW_STAINED_GLASS_PANE);
@@ -224,10 +219,9 @@ public class Menu implements Listener {
                                     ItemStack stack = new ItemStack(Material.PAPER);
                                     stack.setItemMeta(currentItem.getItemMeta());
                                     stack.setAmount(1);
-                                    Inventory inv = invMenu.get(event.getWhoClicked());
+                                    Inventory inv = invMenu.get(event.getWhoClicked().getName());
                                     inv.setItem(first,stack);
-                                    invMenu.replace((Player) event.getWhoClicked(),inv);
-                                    menuContents.put((Player) event.getWhoClicked(), inventory.getContents());
+                                    invMenu.replace(event.getWhoClicked().getName(),inv);
                                 }
                             }else if (currentItem.getItemMeta().getDisplayName().contains("§d")) {
                                 int first = inventory.first(Material.PURPLE_STAINED_GLASS_PANE);
@@ -236,10 +230,9 @@ public class Menu implements Listener {
                                     ItemStack stack = new ItemStack(Material.PAPER);
                                     stack.setItemMeta(currentItem.getItemMeta());
                                     stack.setAmount(1);
-                                    Inventory inv = invMenu.get(event.getWhoClicked());
+                                    Inventory inv = invMenu.get(event.getWhoClicked().getName());
                                     inv.setItem(first,stack);
-                                    invMenu.replace((Player) event.getWhoClicked(),inv);
-                                    menuContents.put((Player) event.getWhoClicked(), inventory.getContents());
+                                    invMenu.replace(event.getWhoClicked().getName(),inv);
                                 }
                             }else if (currentItem.getItemMeta().getDisplayName().contains("§a")) {
                                 int first = inventory.first(Material.LIME_STAINED_GLASS_PANE);
@@ -248,10 +241,9 @@ public class Menu implements Listener {
                                     ItemStack stack = new ItemStack(Material.PAPER);
                                     stack.setItemMeta(currentItem.getItemMeta());
                                     stack.setAmount(1);
-                                    Inventory inv = invMenu.get(event.getWhoClicked());
+                                    Inventory inv = invMenu.get(event.getWhoClicked().getName());
                                     inv.setItem(first,stack);
-                                    invMenu.replace((Player) event.getWhoClicked(),inv);
-                                    menuContents.put((Player) event.getWhoClicked(), inventory.getContents());
+                                    invMenu.replace(event.getWhoClicked().getName(),inv);
                                 }
                             }
                         }
@@ -265,10 +257,9 @@ public class Menu implements Listener {
                                     ItemStack stack = new ItemStack(Material.PAPER);
                                     stack.setItemMeta(item.getItemMeta());
                                     stack.setAmount(1);
-                                    Inventory inv = invMenu2.get(event.getWhoClicked());
+                                    Inventory inv = invMenu2.get(event.getWhoClicked().getName());
                                     inv.setItem(first,stack);
-                                    invMenu2.replace((Player) event.getWhoClicked(),inv);
-                                    menuContents2.put((Player) event.getWhoClicked(), inventory.getContents());
+                                    invMenu2.replace(event.getWhoClicked().getName(),inv);
                                 }
                             }
                         }
@@ -281,16 +272,16 @@ public class Menu implements Listener {
 
     public static void saveMenu1() {
         FileConfiguration config = UpgradeSticks.getPlugin().getConfig();
-        for (Player player : menuContents.keySet()) {
-            config.set("menu1."+ player.getName(),menuContents.get(player));
+        for (String player : invMenu.keySet()) {
+            config.set("menu1."+ player,invMenu.get(player).getContents());
         }
         UpgradeSticks.getPlugin().saveConfig();
     }
 
     public static void saveMenu2() {
         FileConfiguration config = UpgradeSticks.getPlugin().getConfig();
-        for (Player player : menuContents2.keySet()) {
-            config.set("menu2."+ player.getName(),menuContents2.get(player));
+        for (String player : invMenu2.keySet()) {
+            config.set("menu2."+ player,invMenu2.get(player).getContents());
         }
         UpgradeSticks.getPlugin().saveConfig();
     }
@@ -300,7 +291,6 @@ public class Menu implements Listener {
         ConfigurationSection playerData = config.getConfigurationSection("menu1.");
         if (playerData != null) {
             for (String playerName : playerData.getKeys(false)) {
-                Player player = Bukkit.getPlayer(playerName);
                 List<?> contents = playerData.getList(playerName);
                 if (contents != null) {
                     List<ItemStack> menu = new ArrayList<>();
@@ -311,7 +301,11 @@ public class Menu implements Listener {
                     }
 
                     ItemStack[] stacks = menu.toArray(new ItemStack[0]);
-                    menuContents.put(player,stacks);
+                    Inventory inv = Bukkit.createInventory(null,36);
+                    inv.setContents(stacks);
+                    if (playerName != null) {
+                        invMenu.put(playerName,inv);
+                    }
                 }
             }
         }
@@ -322,7 +316,6 @@ public class Menu implements Listener {
         ConfigurationSection playerData = config.getConfigurationSection("menu2.");
         if (playerData != null) {
             for (String playerName : playerData.getKeys(false)) {
-                Player player = Bukkit.getPlayer(playerName);
                 List<?> contents = playerData.getList(playerName);
                 if (contents != null) {
                     List<ItemStack> menu = new ArrayList<>();
@@ -333,7 +326,11 @@ public class Menu implements Listener {
                     }
 
                     ItemStack[] stacks = menu.toArray(new ItemStack[0]);
-                    menuContents2.put(player,stacks);
+                    Inventory inv = Bukkit.createInventory(null,36);
+                    inv.setContents(stacks);
+                    if (playerName != null) {
+                        invMenu2.put(playerName,inv);
+                    }
                 }
             }
         }

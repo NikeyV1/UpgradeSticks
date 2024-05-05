@@ -9,7 +9,7 @@ import org.bukkit.inventory.ItemStack;
 public class UtilityUSBs {
 
     public static int getAmountTridentLightning(Player player) {
-        Inventory inventory = Menu.invMenu.get(player);
+        Inventory inventory = Menu.invMenu.get(player.getName());
         int amount = 0;
         // Durch das Inventar des Spielers iterieren
         if (inventory != null) {
@@ -25,7 +25,7 @@ public class UtilityUSBs {
     }
 
     public static int getAmountLuck(Player player) {
-        Inventory inventory = Menu.invMenu.get(player);
+        Inventory inventory = Menu.invMenu.get(player.getName());
         int amount = 0;
         // Durch das Inventar des Spielers iterieren
         if (inventory != null) {
@@ -41,7 +41,7 @@ public class UtilityUSBs {
     }
 
     public static int getAmountAxeDurability(Player player) {
-        Inventory inventory = Menu.invMenu.get(player);
+        Inventory inventory = Menu.invMenu.get(player.getName());
         int amount = 0;
         // Durch das Inventar des Spielers iterieren
         if (inventory != null) {
@@ -57,7 +57,7 @@ public class UtilityUSBs {
     }
 
     public static int getAmountShieldBreak(Player player) {
-        Inventory inventory = Menu.invMenu.get(player);
+        Inventory inventory = Menu.invMenu.get(player.getName());
         int amount = 0;
         // Durch das Inventar des Spielers iterieren
         if (inventory != null) {

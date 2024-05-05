@@ -9,7 +9,7 @@ import org.bukkit.inventory.ItemStack;
 public class DefenseUSBs {
 
     public static int getAmountArmor(Player player) {
-        Inventory inventory = Menu.invMenu2.get(player);
+        Inventory inventory = Menu.invMenu2.get(player.getName());
         int amount = 0;
         // Durch das Inventar des Spielers iterieren
         if (inventory != null) {
@@ -25,7 +25,7 @@ public class DefenseUSBs {
     }
 
     public static int getAmountArmorToughness(Player player) {
-        Inventory inventory = Menu.invMenu2.get(player);
+        Inventory inventory = Menu.invMenu2.get(player.getName());
         int amount = 0;
         // Durch das Inventar des Spielers iterieren
         if (inventory != null) {
@@ -41,7 +41,7 @@ public class DefenseUSBs {
     }
 
     public static int getAmountKnockbackResistance(Player player) {
-        Inventory inventory = Menu.invMenu2.get(player);
+        Inventory inventory = Menu.invMenu2.get(player.getName());
         int amount = 0;
         // Durch das Inventar des Spielers iterieren
         if (inventory != null) {
@@ -57,7 +57,7 @@ public class DefenseUSBs {
     }
 
     public static int getAmountDamageResistance(Player player) {
-        Inventory inventory = Menu.invMenu2.get(player);
+        Inventory inventory = Menu.invMenu2.get(player.getName());
         int amount = 0;
         // Durch das Inventar des Spielers iterieren
         if (inventory != null) {
@@ -73,7 +73,7 @@ public class DefenseUSBs {
     }
 
     public static int getAmountThorns(Player player) {
-        Inventory inventory = Menu.invMenu2.get(player);
+        Inventory inventory = Menu.invMenu2.get(player.getName());
         int amount = 0;
         // Durch das Inventar des Spielers iterieren
         if (inventory != null) {

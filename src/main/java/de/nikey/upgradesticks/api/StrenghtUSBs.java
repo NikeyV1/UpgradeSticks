@@ -9,7 +9,7 @@ import org.bukkit.inventory.ItemStack;
 @SuppressWarnings("ALL")
 public class StrenghtUSBs {
     public static int getAmountDamageClose(Player player) {
-        Inventory inventory = Menu.invMenu.get(player);
+        Inventory inventory = Menu.invMenu.get(player.getName());
         int amount = 0;
         // Durch das Inventar des Spielers iterieren
         if (inventory != null) {
@@ -25,7 +25,7 @@ public class StrenghtUSBs {
     }
 
     public static int getAmountDamageFar(Player player) {
-        Inventory inventory = Menu.invMenu.get(player);
+        Inventory inventory = Menu.invMenu.get(player.getName());
         int amount = 0;
         // Durch das Inventar des Spielers iterieren
         if (inventory != null) {
@@ -41,7 +41,7 @@ public class StrenghtUSBs {
     }
 
     public static int getAmountAttackSpeed(Player player) {
-        Inventory inventory = Menu.invMenu.get(player);
+        Inventory inventory = Menu.invMenu.get(player.getName());
         int amount = 0;
         // Durch das Inventar des Spielers iterieren
         if (inventory != null) {
@@ -57,7 +57,7 @@ public class StrenghtUSBs {
     }
 
     public static int getAmountExplosion(Player player) {
-        Inventory inventory = Menu.invMenu.get(player);
+        Inventory inventory = Menu.invMenu.get(player.getName());
         int amount = 0;
         // Durch das Inventar des Spielers iterieren
         if (inventory != null) {
@@ -73,7 +73,7 @@ public class StrenghtUSBs {
     }
 
     public static int getAmountDamage(Player player) {
-        Inventory inventory = Menu.invMenu.get(player);
+        Inventory inventory = Menu.invMenu.get(player.getName());
         int amount = 0;
         // Durch das Inventar des Spielers iterieren
         if (inventory != null) {
