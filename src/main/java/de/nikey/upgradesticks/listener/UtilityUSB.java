@@ -12,11 +12,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.player.PlayerFishEvent;
-import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.event.player.PlayerRiptideEvent;
-import org.bukkit.event.player.PlayerToggleSprintEvent;
-import org.bukkit.scheduler.BukkitRunnable;
-import org.bukkit.util.Vector;
 
 import java.util.Random;
 
@@ -25,7 +21,7 @@ public class UtilityUSB implements Listener {
     public void onPlayerRiptide(PlayerRiptideEvent event) {
         Player player = event.getPlayer();
         Random random = new Random();
-        if (random.nextInt(3500) == 189) {
+        if (random.nextInt(680) == 189) {
             UtilitySticks.TridentLightningStick(player);
             player.playSound(Sound.sound(Key.key("entity.experience_orb.pickup"), Sound.Source.AMBIENT,1,1));
         }

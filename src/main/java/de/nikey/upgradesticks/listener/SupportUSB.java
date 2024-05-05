@@ -48,7 +48,7 @@ public class SupportUSB implements Listener {
     @EventHandler
     public void onPlayerItemDamage(PlayerItemDamageEvent event) {
         Random random = new Random();
-        if (random.nextInt(1000) == 100) {
+        if (random.nextInt(2000) == 100) {
             event.getPlayer().playSound(Sound.sound(Key.key("entity.experience_orb.pickup"), Sound.Source.AMBIENT,1,1));
             SupportSticks.DurabilitySaverStick(event.getPlayer());
         }
