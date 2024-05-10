@@ -148,7 +148,9 @@ public class SupportStick implements Listener {
                 amount =  amount*4;
                 amount = amount/100;
                 amount = amount*player.getMaxHealth();
-                player.setHealth(player.getHealth() + amount);
+                if (!((player.getHealth() + amount) > player.getMaxHealth())) {
+                    player.setHealth(player.getHealth() + amount);
+                }
             }
         }
     }
