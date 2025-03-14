@@ -22,19 +22,26 @@ public class DefenseStick implements Listener {
     public void onPlayerToggleSprint(PlayerToggleSprintEvent event) {
             Player player = event.getPlayer();
             double amountArmor = DefenseUSBs.getAmountArmor(player);
-            amountArmor = amountArmor*0.75;
+            if (amountArmor != 0) {
+                amountArmor = amountArmor*0.75;
 
-            player.getAttribute(Attribute.GENERIC_ARMOR).setBaseValue(amountArmor);
+
+                player.getAttribute(Attribute.GENERIC_ARMOR).setBaseValue(amountArmor);
+            }
 
             double amountArmorToughness = DefenseUSBs.getAmountArmorToughness(player);
 
-            player.getAttribute(Attribute.GENERIC_ARMOR_TOUGHNESS).setBaseValue(amountArmorToughness);
+            if (amountArmorToughness != 0) {
+                player.getAttribute(Attribute.GENERIC_ARMOR_TOUGHNESS).setBaseValue(amountArmorToughness);
+            }
 
             double amountKnockbackResistance = DefenseUSBs.getAmountKnockbackResistance(player);
-            amountKnockbackResistance = amountKnockbackResistance *0.3;
+            if (amountKnockbackResistance != 0){
+                amountKnockbackResistance = amountKnockbackResistance *0.3;
 
 
-            player.getAttribute(Attribute.GENERIC_KNOCKBACK_RESISTANCE).setBaseValue(amountKnockbackResistance);
+                player.getAttribute(Attribute.GENERIC_KNOCKBACK_RESISTANCE).setBaseValue(amountKnockbackResistance);
+            }
 
     }
 

@@ -22,7 +22,11 @@ public class SupportSticks implements Listener {
         lore.add("§f+20%");
         itemMeta.setLore(lore);
         stack.setItemMeta(itemMeta);
-        player.getInventory().addItem(stack);
+        if (player.getInventory().firstEmpty() != -1) {
+            player.getInventory().addItem(stack);
+        }else {
+            player.getWorld().dropItem(player.getLocation(),stack);
+        }
     }
 
     public static void ArrowSaverStick(Player player) {
@@ -34,7 +38,11 @@ public class SupportSticks implements Listener {
         lore.add("§f-7.5%");
         itemMeta.setLore(lore);
         stack.setItemMeta(itemMeta);
-        player.getInventory().addItem(stack);
+        if (player.getInventory().firstEmpty() != -1) {
+            player.getInventory().addItem(stack);
+        }else {
+            player.getWorld().dropItem(player.getLocation(),stack);
+        }
     }
 
     public static void DurabilitySaverStick(Player player) {
@@ -46,7 +54,11 @@ public class SupportSticks implements Listener {
         lore.add("§f-10%");
         itemMeta.setLore(lore);
         stack.setItemMeta(itemMeta);
-        player.getInventory().addItem(stack);
+        if (player.getInventory().firstEmpty() != -1) {
+            player.getInventory().addItem(stack);
+        }else {
+            player.getWorld().dropItem(player.getLocation(),stack);
+        }
     }
 
     public static void LifeRecoveryStick(Player player) {
@@ -58,7 +70,11 @@ public class SupportSticks implements Listener {
         lore.add("§f+4%");
         itemMeta.setLore(lore);
         stack.setItemMeta(itemMeta);
-        player.getInventory().addItem(stack);
+        if (player.getInventory().firstEmpty() != -1) {
+            player.getInventory().addItem(stack);
+        }else {
+            player.getWorld().dropItem(player.getLocation(),stack);
+        }
     }
 
     public static void HomingArrowsStick(Player player) {
@@ -70,7 +86,11 @@ public class SupportSticks implements Listener {
         lore.add("§f+7.5%");
         itemMeta.setLore(lore);
         stack.setItemMeta(itemMeta);
-        player.getInventory().addItem(stack);
+        if (player.getInventory().firstEmpty() != -1) {
+            player.getInventory().addItem(stack);
+        }else {
+            player.getWorld().dropItem(player.getLocation(),stack);
+        }
     }
 
     public static void ItemCooldownStick(Player player) {
@@ -82,7 +102,11 @@ public class SupportSticks implements Listener {
         lore.add("§f-15%");
         itemMeta.setLore(lore);
         stack.setItemMeta(itemMeta);
-        player.getInventory().addItem(stack);
+        if (player.getInventory().firstEmpty() != -1) {
+            player.getInventory().addItem(stack);
+        }else {
+            player.getWorld().dropItem(player.getLocation(),stack);
+        }
     }
 
     public static void PotionDurationStick(Player player) {
@@ -94,6 +118,10 @@ public class SupportSticks implements Listener {
         lore.add("§f+15%");
         itemMeta.setLore(lore);
         stack.setItemMeta(itemMeta);
-        player.getInventory().addItem(stack);
+        if (player.getInventory().firstEmpty() != -1) {
+            player.getInventory().addItem(stack);
+        }else {
+            player.getWorld().dropItem(player.getLocation(),stack);
+        }
     }
 }

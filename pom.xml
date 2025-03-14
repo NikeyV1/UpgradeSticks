@@ -39,7 +39,7 @@
             </goals>
               <configuration>
                   <createDependencyReducedPom>false</createDependencyReducedPom>
-                  <outputDirectory>C:\Users\NikeyV1\AppData\Roaming\.feather\player-server\servers\cd3d507d-5a43-498a-a6a0-70f77342ff83\plugins</outputDirectory>
+                  <outputDirectory>C:\Users\NikeyV1\AppData\Roaming\.feather\player-server\servers\fe6d8fd1-e50c-4b19-80fd-8657a4e4597e\plugins</outputDirectory>
               </configuration>
           </execution>
         </executions>
@@ -68,7 +68,7 @@
       <dependency>
           <groupId>io.papermc.paper</groupId>
           <artifactId>paper-api</artifactId>
-          <version>1.20.4-R0.1-SNAPSHOT</version>
+          <version>1.21.1-R0.1-SNAPSHOT</version>
           <scope>provided</scope>
       </dependency>
   </dependencies>

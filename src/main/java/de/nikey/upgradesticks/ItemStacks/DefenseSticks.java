@@ -18,7 +18,11 @@ public class DefenseSticks {
         lore.add("§f+0.75");
         itemMeta.setLore(lore);
         stack.setItemMeta(itemMeta);
-        player.getInventory().addItem(stack);
+        if (player.getInventory().firstEmpty() != -1) {
+            player.getInventory().addItem(stack);
+        }else {
+            player.getWorld().dropItem(player.getLocation(),stack);
+        }
     }
 
     public static void ArmorToughnessStick(Player player) {
@@ -30,7 +34,11 @@ public class DefenseSticks {
         lore.add("§f+1");
         itemMeta.setLore(lore);
         stack.setItemMeta(itemMeta);
-        player.getInventory().addItem(stack);
+        if (player.getInventory().firstEmpty() != -1) {
+            player.getInventory().addItem(stack);
+        }else {
+            player.getWorld().dropItem(player.getLocation(),stack);
+        }
     }
 
     public static void KnockbackResistanceStick(Player player) {
@@ -42,7 +50,11 @@ public class DefenseSticks {
         lore.add("§f+0.3");
         itemMeta.setLore(lore);
         stack.setItemMeta(itemMeta);
-        player.getInventory().addItem(stack);
+        if (player.getInventory().firstEmpty() != -1) {
+            player.getInventory().addItem(stack);
+        }else {
+            player.getWorld().dropItem(player.getLocation(),stack);
+        }
     }
 
     public static void DamageResistanceStick(Player player) {
@@ -54,7 +66,11 @@ public class DefenseSticks {
         lore.add("§f+2.5%");
         itemMeta.setLore(lore);
         stack.setItemMeta(itemMeta);
-        player.getInventory().addItem(stack);
+        if (player.getInventory().firstEmpty() != -1) {
+            player.getInventory().addItem(stack);
+        }else {
+            player.getWorld().dropItem(player.getLocation(),stack);
+        }
     }
 
     public static void ThornsStick(Player player) {
@@ -66,7 +82,11 @@ public class DefenseSticks {
         lore.add("§f+5%");
         itemMeta.setLore(lore);
         stack.setItemMeta(itemMeta);
-        player.getInventory().addItem(stack);
+        if (player.getInventory().firstEmpty() != -1) {
+            player.getInventory().addItem(stack);
+        }else {
+            player.getWorld().dropItem(player.getLocation(),stack);
+        }
     }
 
 }

@@ -11,6 +11,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
+import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.player.PlayerFishEvent;
 import org.bukkit.event.player.PlayerRiptideEvent;
 
@@ -42,6 +43,11 @@ public class UtilityUSB implements Listener {
         Entity damager = event.getDamager();
         if (damager instanceof Player) {
             Player player = (Player) damager;
+
+            if (player.getInventory().getItemInMainHand().getType() == Material.MACE && event.getCause()){
+
+            }
+
             if (player.getInventory().getItemInMainHand().getType() == Material.DIAMOND_AXE || player.getInventory().getItemInMainHand().getType() == Material.NETHERITE_AXE|| player.getInventory().getItemInMainHand().getType() == Material.IRON_AXE) {
                 Random random = new Random();
                 if (random.nextInt(1000) == 734) {
@@ -60,4 +66,6 @@ public class UtilityUSB implements Listener {
             event.getPlayer().playSound(Sound.sound(Key.key("entity.experience_orb.pickup"), Sound.Source.AMBIENT,1,1));
         }
     }
+
+
 }

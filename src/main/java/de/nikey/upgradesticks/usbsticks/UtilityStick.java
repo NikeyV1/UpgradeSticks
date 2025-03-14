@@ -3,6 +3,8 @@ package de.nikey.upgradesticks.usbsticks;
 import de.nikey.upgradesticks.api.UtilityUSBs;
 import io.papermc.paper.event.player.PlayerShieldDisableEvent;
 import org.bukkit.Material;
+import org.bukkit.damage.DamageSource;
+import org.bukkit.damage.DamageType;
 import org.bukkit.entity.*;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -24,6 +26,7 @@ public class UtilityStick implements Listener {
                 LivingEntity victim = (LivingEntity) event.getEntity();
                 Random random = new Random();
                 double amount = UtilityUSBs.getAmountTridentLightning(attacker);
+                if (amount == 0)return;
                 amount = amount*0.08;
                 amount = 1/amount;
                 int round = (int) Math.round(amount);

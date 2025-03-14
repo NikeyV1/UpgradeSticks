@@ -15,6 +15,7 @@ public class MovementStick implements Listener {
     public void onPlayerSprint(PlayerToggleSprintEvent event) {
         Player player = event.getPlayer();
         double amount = MobilityUSBs.getAmountWalkSpeed(player);
+        if (amount == 0)return;
 
         amount =  amount*10;
         amount = amount/100 +1;

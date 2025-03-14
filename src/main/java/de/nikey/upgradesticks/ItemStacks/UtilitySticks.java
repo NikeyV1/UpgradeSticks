@@ -18,7 +18,11 @@ public class UtilitySticks {
         lore.add("§f+8%");
         itemMeta.setLore(lore);
         stack.setItemMeta(itemMeta);
-        player.getInventory().addItem(stack);
+        if (player.getInventory().firstEmpty() != -1) {
+            player.getInventory().addItem(stack);
+        }else {
+            player.getWorld().dropItem(player.getLocation(),stack);
+        }
     }
 
     public static void LuckStick(Player player) {
@@ -30,7 +34,11 @@ public class UtilitySticks {
         lore.add("§f+1");
         itemMeta.setLore(lore);
         stack.setItemMeta(itemMeta);
-        player.getInventory().addItem(stack);
+        if (player.getInventory().firstEmpty() != -1) {
+            player.getInventory().addItem(stack);
+        }else {
+            player.getWorld().dropItem(player.getLocation(),stack);
+        }
     }
 
     public static void AxeDurabilityStick(Player player) {
@@ -42,7 +50,11 @@ public class UtilitySticks {
         lore.add("§f+2.5%");
         itemMeta.setLore(lore);
         stack.setItemMeta(itemMeta);
-        player.getInventory().addItem(stack);
+        if (player.getInventory().firstEmpty() != -1) {
+            player.getInventory().addItem(stack);
+        }else {
+            player.getWorld().dropItem(player.getLocation(),stack);
+        }
     }
 
     public static void ShieldBreakStick(Player player) {
@@ -54,6 +66,26 @@ public class UtilitySticks {
         lore.add("§f+5%");
         itemMeta.setLore(lore);
         stack.setItemMeta(itemMeta);
-        player.getInventory().addItem(stack);
+        if (player.getInventory().firstEmpty() != -1) {
+            player.getInventory().addItem(stack);
+        }else {
+            player.getWorld().dropItem(player.getLocation(),stack);
+        }
+    }
+
+    public static void MazeRangeStick(Player player) {
+        ItemStack stack = new ItemStack(Material.PAPER);
+        ItemMeta itemMeta = stack.getItemMeta();
+        itemMeta.setDisplayName("§aMaze Range USB");
+        ArrayList<String> lore = new ArrayList<>();
+        lore.add("§fIncrease range of area damage when hitting wich the maze");
+        lore.add("§f+0.5");
+        itemMeta.setLore(lore);
+        stack.setItemMeta(itemMeta);
+        if (player.getInventory().firstEmpty() != -1) {
+            player.getInventory().addItem(stack);
+        }else {
+            player.getWorld().dropItem(player.getLocation(),stack);
+        }
     }
 }

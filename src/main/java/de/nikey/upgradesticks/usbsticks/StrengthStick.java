@@ -16,11 +16,13 @@ public class StrengthStick implements Listener {
     public void onPlayerToggleSprint(PlayerToggleSprintEvent event) {
         Player player = event.getPlayer();
         double amount = StrenghtUSBs.getAmountAttackSpeed(player);
-        amount =  amount*7.5;
-        amount = amount/100;
-        amount=amount*2;
+        if (amount != 0) {
+            amount =  amount*7.5;
+            amount = amount/100;
+            amount=amount*2;
 
-        player.getAttribute(Attribute.GENERIC_ATTACK_SPEED).setBaseValue(4+amount);
+            player.getAttribute(Attribute.GENERIC_ATTACK_SPEED).setBaseValue(4+amount);
+        }
     }
 
     @EventHandler(priority = EventPriority.HIGHEST)

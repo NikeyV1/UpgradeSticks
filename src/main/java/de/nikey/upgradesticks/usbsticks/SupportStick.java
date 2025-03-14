@@ -82,6 +82,7 @@ public class SupportStick implements Listener {
             double amount = SupportUSBs.getAmountHomingArrows(player);
             if (amount != 0 ) {
                 amount = amount*7.5;
+
                 amount = amount/100;
 
                 amount = 1/amount;

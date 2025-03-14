@@ -18,7 +18,11 @@ public class MobilitySticks {
         lore.add("§f+10%");
         itemMeta.setLore(lore);
         stack.setItemMeta(itemMeta);
-        player.getInventory().addItem(stack);
+        if (player.getInventory().firstEmpty() != -1) {
+            player.getInventory().addItem(stack);
+        }else {
+            player.getWorld().dropItem(player.getLocation(),stack);
+        }
     }
 
     public static void SwimSpeedStick(Player player) {
@@ -30,7 +34,11 @@ public class MobilitySticks {
         lore.add("§f+10%");
         itemMeta.setLore(lore);
         stack.setItemMeta(itemMeta);
-        player.getInventory().addItem(stack);
+        if (player.getInventory().firstEmpty() != -1) {
+            player.getInventory().addItem(stack);
+        }else {
+            player.getWorld().dropItem(player.getLocation(),stack);
+        }
     }
 
     public static void HungerMoveStick(Player player) {
@@ -42,7 +50,11 @@ public class MobilitySticks {
         lore.add("§f+0.001%");
         itemMeta.setLore(lore);
         stack.setItemMeta(itemMeta);
-        player.getInventory().addItem(stack);
+        if (player.getInventory().firstEmpty() != -1) {
+            player.getInventory().addItem(stack);
+        }else {
+            player.getWorld().dropItem(player.getLocation(),stack);
+        }
     }
 
     public static void ExpMoveStick(Player player) {
@@ -54,6 +66,10 @@ public class MobilitySticks {
         lore.add("§f+0.001%");
         itemMeta.setLore(lore);
         stack.setItemMeta(itemMeta);
-        player.getInventory().addItem(stack);
+        if (player.getInventory().firstEmpty() != -1) {
+            player.getInventory().addItem(stack);
+        }else {
+            player.getWorld().dropItem(player.getLocation(),stack);
+        }
     }
 }
